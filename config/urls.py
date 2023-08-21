@@ -16,7 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import gptapp.views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('top/', gptapp.views.root)
+]
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('top/', gptapp.views.root),
+    path('', gptapp.views.root, name='root'),
+    path('gptapp/pattern/<username>/', gptapp.views.pattern, name='pattern'),
+    path('gptapp/param/', gptapp.views.param, name='param'),
+    path('gptapp/', gptapp.views.index, name="index"),
 ]
