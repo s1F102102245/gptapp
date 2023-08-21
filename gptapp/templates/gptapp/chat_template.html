@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT-3とのチャット</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="GPT-3に質問する">
+    </form>
+
+    {% if chat_response %}
+    <h2>応答:</h2>
+    <p>{{ chat_response }}</p>
+    {% endif %}
+</body>
+</html>
