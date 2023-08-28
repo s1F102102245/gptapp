@@ -20,7 +20,7 @@ openai.api_base = 'https://api.openai.iniad.org/api/v1'
 def chat_with_gpt3(prompt_text):
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": f"{prompt_text}"}
