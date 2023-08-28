@@ -139,8 +139,6 @@ openai.api_base = 'https://api.openai.iniad.org/api/v1'
 
 # settings.py
 
-# ... 他の設定 ...
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

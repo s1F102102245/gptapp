@@ -14,19 +14,21 @@ openai.api_base = 'https://api.openai.iniad.org/api/v1'
 
 logger = logging.getLogger(__name__)
 
+openai.api_key = settings.OPENAI_API_KEY
+openai.api_base = 'https://api.openai.iniad.org/api/v1'
+
 def chat_with_gpt3(prompt_text):
     try:
-        response = openai.Completion.create(
-            engine="text-davinci-002",
-            prompt=prompt_text,
-            max_tokens=150
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": f"{prompt_text}"}
+            ]
         )
-        logger.info(response)
-        return response.choices[0].text.strip()
+        return response['choices'][0]['message']['content']
     except Exception as e:
-        logger.error(e)
         return str(e)
-
 
 def chat_view(request):
     chat_response = ""
@@ -39,4 +41,3 @@ def chat_view(request):
         form = ChatForm()
 
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
-
