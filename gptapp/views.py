@@ -6,6 +6,7 @@ import os
 from django.conf import settings
 import logging
 import requests
+from .forms import ChatForm
 
 # irequestsmport openai
 
@@ -70,3 +71,5 @@ def chat_view(request):
         form = ChatForm()
 
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
+
+#def post():
