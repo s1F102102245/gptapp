@@ -47,6 +47,7 @@ logger = logging.getLogger(__name__)
 openai.api_key = settings.OPENAI_API_KEY
 openai.api_base = 'https://api.openai.iniad.org/api/v1'
 
+#output
 def chat_with_gpt3(prompt_text):
     try:
         response = openai.ChatCompletion.create(
@@ -60,6 +61,7 @@ def chat_with_gpt3(prompt_text):
     except Exception as e:
         return str(e)
 
+#input
 def chat_view(request):
     chat_response = ""
     if request.method == "POST":
@@ -72,4 +74,3 @@ def chat_view(request):
 
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
 
-#def post():
