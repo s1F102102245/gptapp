@@ -6,7 +6,7 @@ import os
 from django.conf import settings
 import logging
 import requests
-from .forms import ChatForm
+
 
 # irequestsmport openai
 
