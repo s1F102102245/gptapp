@@ -7,9 +7,9 @@
     <title>GPT-3とのチャット</title>
 </head>
 <body>
-    <form method="post">
-        {{ form.as_p }}
+    <form action="" method="post">
         {% csrf_token %}
+        {{ form.as_p }}
         <input type="submit" value="GPT-3に質問する">
     </form>
 
