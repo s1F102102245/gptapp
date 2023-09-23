@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -5,17 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPT-3とのチャット</title>
+    <link rel="stylesheet" href="{% static 'gptapp/sample.css' %}">
 </head>
 <body>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="GPT-3に質問する">
-    </form>
+    <header>
+        <h1>Poket Sensei</h1>
+    </header>
+    <main>
+        <h2>
+            question for chat gpt            
+        </h2>
+        <form action="" method="post" class="chat-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="chat-button">GPT-3に質問する</button>
+        </form>
 
-    {% if chat_response %}
-    <h2>応答:</h2>
-    <p>{{ chat_response }}</p>
-    {% endif %}
+        {% if chat_response %}
+        <section class="chat-response">
+            <h2>回答:</h2>
+            <p>{{ chat_response }}</p>
+        </section>
+        {% endif %}
+    </main>
 </body>
 </html>
