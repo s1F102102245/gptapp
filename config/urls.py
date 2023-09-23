@@ -31,9 +31,11 @@ urlpatterns = [
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('top/', gptapp.views.root),
+    #top
     path('', gptapp.views.root, name='root'),
     path('gptapp/pattern/<username>/', gptapp.views.pattern, name='pattern'),
     path('gptapp/param/', gptapp.views.param, name='param'),
     path('gptapp/', gptapp.views.index, name="index"),
+    #chatapage
     path('chat/', views.chat_view, name='chat_view'),
 ]
