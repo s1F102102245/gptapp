@@ -13,34 +13,37 @@
         Poket Sensei
         - Home -
     </header>
+    
     <main>
-        <section class="chat-section">
-            {% if chat_message %}
-            <div class="chat-message">
+        <div class="chat-right">
+            {% if user_input %}
+            <div class="user_input">
                 <h2>質問:</h2>
-                <p>{{ chat_message }}</p>
+                <p>{{ user_input }}</p>
             </div>
             {% endif %}
+        </div>
+
+
+        <div class="chat-left">
             {% if chat_response %}
             <div class="chat-response">
                 <h2>回答:</h2>
                 <p>{{ chat_response }}</p>
             </div>
             {% endif %}
-        </section>
+        </div>
 
-        <footer class="footer">
 
-                    <form action="" method="post" class="chat-form">
-                    {% csrf_token %}
-                    {{ form.as_p }}
 
-  
-                    <button type="submit" class="chat-button">GPT-3に質問する</button>
-  
-                    </form>
-
-        </footer>  
+    <footer class="footer">
+        <form action="" method="post" class="chat-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+        <button type="submit" class="chat-button">GPT-3に質問する</button>
+        </form>
+    </footer>  
+    
     </main>
 </body>
 </html>

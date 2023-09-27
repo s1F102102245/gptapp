@@ -8,6 +8,21 @@ header{
 
 /*2*/
 
+.chat-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.chat-left{
+    flex-basis: 50%;
+}
+
+.chat-right{
+    flex-basis: 50%;
+    text-align: right;
+}
+
 .chat-message {
     text-align: right;
 }
