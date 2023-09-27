@@ -15,18 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,  include
 import gptapp.views
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('top/', gptapp.views.root)
-]
-
+    path('top/', gptapp.views.root),
+]   + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,4 +37,4 @@ urlpatterns = [
     path('gptapp/param/', gptapp.views.param, name='param'),
     path('gptapp/', gptapp.views.index, name="index"),
     path('chat/', views.chat_view, name='chat_view'),
-]
+] 
