@@ -41,6 +41,17 @@ main {
     
 }
 
+
+
+
+/* フッタースタイリング */
+footer {
+    background-color: #73bcad; /* 背景色をくすんだ色に設定 */
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
 .chat-form {
     background-color: #f5f5f5;
     border: 1px solid #ddd;
