@@ -6,6 +6,7 @@ import os
 from django.conf import settings
 import logging
 import requests
+from ..config.forms import ChatForm
 
 # irequestsmport openai
 
@@ -46,6 +47,7 @@ logger = logging.getLogger(__name__)
 openai.api_key = settings.OPENAI_API_KEY
 openai.api_base = 'https://api.openai.iniad.org/api/v1'
 
+#output
 def chat_with_gpt3(prompt_text):
     try:
         response = openai.ChatCompletion.create(
@@ -59,6 +61,7 @@ def chat_with_gpt3(prompt_text):
     except Exception as e:
         return str(e)
 
+#input
 def chat_view(request):
     chat_response = ""
     if request.method == "POST":
@@ -66,7 +69,14 @@ def chat_view(request):
         if form.is_valid():
             user_input = form.cleaned_data['user_input']
             chat_response = chat_with_gpt3(user_input)
+            #form reset
+            form = ChatForm()
     else:
         form = ChatForm()
 
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
+
+#form reset
+
+
+#question 

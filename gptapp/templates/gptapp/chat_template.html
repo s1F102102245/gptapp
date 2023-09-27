@@ -10,24 +10,37 @@
 </head>
 <body>
     <header>
-        <h1>Poket Sensei</h1>
+        Poket Sensei
+        - Home -
     </header>
     <main>
-        <h2>
-            question for chat gpt            
-        </h2>
-        <form action="" method="post" class="chat-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="chat-button">GPT-3に質問する</button>
-        </form>
-
-        {% if chat_response %}
-        <section class="chat-response">
-            <h2>回答:</h2>
-            <p>{{ chat_response }}</p>
+        <section class="chat-section">
+            {% if chat_message %}
+            <div class="chat-message">
+                <h2>質問:</h2>
+                <p>{{ chat_message }}</p>
+            </div>
+            {% endif %}
+            {% if chat_response %}
+            <div class="chat-response">
+                <h2>回答:</h2>
+                <p>{{ chat_response }}</p>
+            </div>
+            {% endif %}
         </section>
-        {% endif %}
+
+        <footer class="footer">
+
+                    <form action="" method="post" class="chat-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+  
+                    <button type="submit" class="chat-button">GPT-3に質問する</button>
+  
+                    </form>
+
+        </footer>  
     </main>
 </body>
 </html>
