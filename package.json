@@ -3,5 +3,8 @@
     "axios": "^1.5.1",
     "vue-draggable-next": "^2.2.1",
     "vuedraggable": "^2.24.3"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve"
   }
 }
