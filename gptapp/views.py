@@ -9,7 +9,8 @@ import logging
 from .forms import OCRForm
 import pytesseract
 from PIL import Image
-
+import pyocr
+from pyocr.builders import TextBuilder
 
 # irequestsmport openai
 
@@ -89,7 +90,7 @@ def ocr_view(request):
         if form.is_valid():
             image = form.cleaned_data['image']
             img = Image.open(image)
-            text = pytesseract.image_to_string(img)
+            text = pytesseract.image_to_string(img, lang='jpn')
 
     else:
         form = OCRForm()
