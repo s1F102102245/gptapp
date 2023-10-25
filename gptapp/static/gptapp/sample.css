@@ -83,3 +83,12 @@ footer {
 .chat-response p {
     font-size: 16px;
 }
+
+
+
+
+/* ロード画面用 */
+#loading-indicator {
+    display: none;
+}
+
