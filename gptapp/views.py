@@ -5,7 +5,11 @@ import openai
 import os
 from django.conf import settings
 import logging
-import requests
+
+from .forms import OCRForm
+import pytesseract
+from PIL import Image
+
 
 # irequestsmport openai
 
@@ -70,3 +74,25 @@ def chat_view(request):
         form = ChatForm()
 
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
+
+
+
+# Tesseractバイナリファイルの相対パス
+tesseract_path = os.path.join(settings.BASE_DIR, 'Tesseract-OCR', 'tesseract.exe')
+
+def ocr_view(request):
+    pytesseract.pytesseract.tesseract_cmd = tesseract_path
+    text = None
+
+    if request.method == 'POST':
+        form = OCRForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            img = Image.open(image)
+            text = pytesseract.image_to_string(img)
+
+    else:
+        form = OCRForm()
+
+    return render(request, 'gptapp/ocr.html', {'form': form, 'text': text})
+

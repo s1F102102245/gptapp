@@ -13,9 +13,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import openai
+import pytesseract
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,6 +28,7 @@ SECRET_KEY = 'django-insecure-k4wmb6zn7*m=c+c9wi(o*_d1^9$wy8j9r%xo1&qn74q=*mc%po
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 
 
