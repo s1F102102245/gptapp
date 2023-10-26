@@ -86,6 +86,7 @@ class ImageUploadForm(forms.Form):
 def ocr_view(request):
     # Tesseractのパスを設定
     pyocr.tesseract.TESSERACT_CMD = settings.TESSERACT_CMD
+    text = None
 
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
