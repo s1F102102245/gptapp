@@ -24,12 +24,28 @@
             <button type="submit" class="chat-button">GPT-3に質問する</button>
         </form>
 
+        <!-- OCRのフォームとテキスト表示を追加 -->
+        <h2>画像からテキストを抽出する (OCR)</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ ocr_form.as_p }}
+            <input type="file" name="image">  <!-- ファイルを選択するための input 要素 -->
+            <input type="submit" value="文字を抽出">  <!-- ファイルをアップロードするボタン -->
+        </form>
+
+        {% if ocr_text %}
+        <h2>OCRの結果:</h2>
+        <p>{{ ocr_text }}</p>
+        {% endif %}
+
         {% if chat_response %}
         <section class="chat-response">
             <h2>回答:</h2>
             <p>{{ chat_response }}</p>
         </section>
         {% endif %}
+
+        
     </main>
     
     <footer>

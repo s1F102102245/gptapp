@@ -77,11 +77,11 @@ def chat_view(request):
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
 
 
-
 # Tesseractバイナリファイルの相対パス
     
 class ImageUploadForm(forms.Form):
     image = forms.ImageField()
+
 
 def ocr_view(request):
     # Tesseractのパスを設定
