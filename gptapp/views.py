@@ -10,7 +10,7 @@ from .forms import OCRForm
 import pytesseract
 from PIL import Image
 import pyocr
-from pyocr.builders import TextBuilder
+from django import forms
 
 # irequestsmport openai
 
@@ -79,21 +79,31 @@ def chat_view(request):
 
 
 # Tesseractバイナリファイルの相対パス
-tesseract_path = os.path.join(settings.BASE_DIR, 'Tesseract-OCR', 'tesseract.exe')
+    
+class ImageUploadForm(forms.Form):
+    image = forms.ImageField()
 
 def ocr_view(request):
-    pytesseract.pytesseract.tesseract_cmd = tesseract_path
-    text = None
+    # Tesseractのパスを設定
+    pyocr.tesseract.TESSERACT_CMD = settings.TESSERACT_CMD
 
     if request.method == 'POST':
-        form = OCRForm(request.POST, request.FILES)
+        form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            image = form.cleaned_data['image']
-            img = Image.open(image)
-            text = pytesseract.image_to_string(img, lang='jpn')
+            # アップロードされた画像を取得
+            uploaded_image = form.cleaned_data['image']
 
+            # 利用可能なOCRツールを取得
+            tools = pyocr.get_available_tools()
+            if len(tools) == 0:
+                text = "OCRツールが見つかりませんでした"
+            else:
+                tool = tools[0] # 最初のOCRツールを使用
+                image = Image.open(uploaded_image)      # 画像からテキストを抽出
+                text = tool.image_to_string(image, lang="jpn")                
+                text = text.replace(' ', '') # 不要なスペースを削除
     else:
-        form = OCRForm()
+        form = ImageUploadForm()
 
+    # OCRの結果をテンプレートに渡す
     return render(request, 'gptapp/ocr.html', {'form': form, 'text': text})
-

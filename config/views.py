@@ -41,3 +41,5 @@ def chat_view(request):
         form = ChatForm()
 
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
+
+
