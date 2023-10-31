@@ -64,6 +64,12 @@ def chat_with_gpt3(prompt_text):
     except Exception as e:
         return str(e)
 
+
+
+class ImageUploadForm(forms.Form):
+    image = forms.ImageField()
+
+
 def chat_view(request):
     chat_response = ""
     if request.method == "POST":
@@ -79,8 +85,7 @@ def chat_view(request):
 
 # Tesseractバイナリファイルの相対パス
     
-class ImageUploadForm(forms.Form):
-    image = forms.ImageField()
+
 
 
 def ocr_view(request):
