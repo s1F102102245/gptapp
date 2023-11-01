@@ -10,6 +10,8 @@
     <title>GPT-3.5とのチャット</title>
     <link rel="stylesheet" href="{% static 'gptapp/sample.css' %}">
 </head>
+
+
 <body>
     <header>
         <h1>Poket Sensei</h1>
@@ -41,7 +43,6 @@
                 document.getElementById('loading-indicator').style.display = 'none';
             }
             hideLoadingIndicator();
-
         </script>
 
         {% if chat_response %}
