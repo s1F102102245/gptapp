@@ -19,9 +19,15 @@ header h1 {
     font-size: 24px;
 }
 
+/*大見出しの設定*/
 h2 {
-    font-family: "Comic Sans MS";
-}
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px dotted #94c8b1;
+    border-left: 10px solid #d0e35b;
+    color: #6fbb9a;
+    border-radius: 5px 0 0 5px;
+  }
 
 /* Apply styles to main content */
 main {
@@ -61,3 +67,18 @@ main {
 .chat-response p {
     font-size: 16px;
 }
+
+/*top*/
+#top {
+    
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-size: 25px;
+    background: linear-gradient(-45deg, #9d6fbb, #da00b6, #ab06ed, #f705bb, #ec02c5, #da0883, #b6037a, #da0066, #ed0672, #f70576, #ec025c, #ed065e);
+    color: #FFFFFF;
+    text-decoration: none;
+  }

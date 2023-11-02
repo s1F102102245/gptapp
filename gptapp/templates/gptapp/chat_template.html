@@ -29,5 +29,60 @@
         </section>
         {% endif %}
     </main>
+<<<<<<< Updated upstream
+=======
+    
+    <section id="questionnaire">
+        <h2 class="h">おすすめの問題！！！</h2>
+        <p>あなたがみんなにおすすめしたい問題を共有してみよう！</p>
+        <form action="{% url 'index' %}" method="post">
+          {% csrf_token %}
+          <div>
+            <label for="titleInput">問題</label><br>
+            <input id="titleInput" name="title" type="text" placeholder="Input title">
+          </div>
+          <div>
+            <label for="textInput">問題の内容・おすすめポイント</label><br>
+            <textarea id="textInput" name="text" rows="3"></textarea>
+          </div>
+          <div>
+            <button type="submit">投稿</button>
+          </div>
+        </form>
+        <br>
+    
+        <div>
+          <a href="{% url 'index' %}?sort=date">投稿順</a> |
+          <a href="{% url 'index' %}?sort=like">いいね順</a>
+        </div>
+    
+        {% if articles %}
+        {% for article in articles %}
+        <div class="text">
+          <h2><a href="{% url 'detail' article.id %}">{{ article.title }}</a></h2>
+          <small>[{{ article.posted_at }}]</small>
+          <div>
+            <a href="" onclick="like({{article.id}});">
+              👍 <span id="like{{article.id}}">{{ article.like }}</span>
+            </a>
+          </div>
+          <div>
+            {{ article.body | linebreaksbr }}
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No article.</p>
+        {% endif %}
+      </section>
+    
+
+
+
+    <a href="#" id="top">Top</a>
+    <footer>
+        <p><small>INIAD＠team16-group4</small></p>
+    </footer>
+>>>>>>> Stashed changes
 </body>
 </html>
