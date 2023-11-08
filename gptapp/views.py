@@ -17,8 +17,9 @@ import requests
 # Create your views here.
 
 
+
 def root(request):
-    return HttpResponse('Hello Django')
+    return render(request, 'gptapp/base.html')
 
 
 def pattern(request, username):

@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勉強のモチベーションアップ</title>
+    <link rel="stylesheet" href="{% static 'gptapp/sample.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Poket Sensei</h1>
+    </header>
+    <main>
+        <section class="motivation-text">
+            <h2>ChatGPTと勉強しよう！</h2>
+            <p>勉強を始める新しい一日が始まりました。目標に向かって一歩前進しましょう。わからないことがあればチャットで質問してみましょう。GPT-3があなたをサポートします。</p>
+        </section>
+        <section class="motivation-image" style="text-align: center;">
+            <img src="{% static 'gptapp/kawaii_gif.gif' %}" style="width: 600px; height: 300px;"alt="ロード中">
+        </section>
+        <section class="get-started" style="text-align: center;">
+            <h3>さあ、はじめましょう!!</h3>
+            <a href="chat" class="chat-button">メインサービスへ</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; INIAD＠team16-group4</p>
+    </footer>
+</body>
+</html>
