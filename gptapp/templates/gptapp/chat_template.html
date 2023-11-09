@@ -17,9 +17,68 @@
         <h1>Poket Sensei</h1>
     </header>
     <main>
+        <form id="settings-form">
+            <label for="exam-date">試験日:</label>
+            <input type="date" id="exam-date" name="exam-date">
+        
+            <label for="focus-time">集中時間 (分):</label>
+            <input type="number" id="focus-time" name="focus-time" min="1">
+        
+            <button type="button" id="update-settings">設定を保存</button>
+        </form>
+
+        <script>
+            const settingsForm = document.getElementById('settings-form');
+            const examDateInput = document.getElementById('exam-date');
+            const focusTimeInput = document.getElementById('focus-time');
+            const updateSettingsButton = document.getElementById('update-settings');
+            
+            // ユーザの設定を初期化
+            let examDate = new Date();
+            let focusTimeMinutes = 30;
+        
+            // フォームの値を読み取り、設定を更新
+            updateSettingsButton.addEventListener('click', function() {
+                const selectedDate = new Date(examDateInput.value);
+                if (!isNaN(selectedDate.getTime())) {
+                    examDate = selectedDate;
+                }
+        
+                const selectedTime = parseInt(focusTimeInput.value, 10);
+                if (!isNaN(selectedTime) && selectedTime > 0) {
+                    focusTimeMinutes = selectedTime;
+                }
+        
+                // 設定を保存したら、カウントダウンを更新
+                updateCountdown();
+                updateFocusTime();
+            });
+        
+            function updateCountdown() {
+                const currentDate = new Date();
+                const daysLeft = Math.floor((examDate - currentDate) / (1000 * 60 * 60 * 24));
+                document.getElementById('days-left').textContent = daysLeft;
+            }
+        
+            function updateFocusTime() {
+                const minutesLeft = focusTimeMinutes;
+                document.getElementById('minutes-left').textContent = minutesLeft;
+            }
+        
+            // 初期表示を更新
+            updateCountdown();
+            updateFocusTime();
+        
+            // タイマーを使って定期的に更新
+            setInterval(updateCountdown, 1000);  // 1秒ごとに更新
+            setInterval(updateFocusTime, 60 * 1000);  // 1分ごとに更新
+        </script>
+        
+
         <h2>
             question for chat gpt            
         </h2>
+
         <form action="" method="post" class="chat-form">
             {% csrf_token %}
             {{ form.as_p }}

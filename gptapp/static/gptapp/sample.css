@@ -46,6 +46,9 @@ main {
 
 /* フッタースタイリング */
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background-color: #73bcad; /* 背景色をくすんだ色に設定 */
     color: white;
     text-align: center;
