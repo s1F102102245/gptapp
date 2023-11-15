@@ -111,6 +111,7 @@ def chat_view(request):
     pyocr.tesseract.TESSERACT_CMD = settings.TESSERACT_CMD
     chat_response = ""
     chat_form = ChatForm(request.POST or None, prefix='chat')
+
     ocr_form = ImageUploadForm(request.POST or None, request.FILES or None, prefix='upload')
     ocr_text = None
 
@@ -124,7 +125,7 @@ def chat_view(request):
     elif 'upload_button' in request.POST:
         if ocr_form.is_valid():
             # アップロードされた画像を取得
-            uploaded_image = ocr_form.cleaned_data['image']
+            uploaded_image1 = ocr_form.cleaned_data['image']
 
             # 利用可能なOCRツールを取得
             tools = pyocr.get_available_tools()
@@ -132,7 +133,7 @@ def chat_view(request):
                 ocr_text = "OCRツールが見つかりませんでした"
             else:
                 tool = tools[0] # 最初のOCRツールを使用
-                image = Image.open(uploaded_image)      # 画像からテキストを抽出
+                image = Image.open(uploaded_image1)      # 画像からテキストを抽出
                 ocr_text = tool.image_to_string(image, lang="jpn")                
                 ocr_text = ocr_text.replace(' ', '') # 不要なスペースを削除
 

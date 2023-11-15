@@ -24,11 +24,13 @@
 
         <!-- OCRのフォームとテキスト表示を追加 -->
         <h2>画像からテキストを抽出する (OCR)</h2>
-        <form method="post" name="ocr_button" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ ocr_form.as_p }}
-            <input type="submit" value="OCRを実行"> 
+            <input type="submit" name="upload_button" value="OCRを実行"> 
         </form>
+
+        
         {% if ocr_text %}
         <h2>OCRの結果:</h2>
         <p>{{ ocr_text }}</p>
