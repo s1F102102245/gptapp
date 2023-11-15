@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPT-3とのチャット</title>
     <link rel="stylesheet" href="{% static 'gptapp/sample.css' %}">
+    <!-- <script src="{% static 'gptapp/chat_script.js' %}"></script>  -->
+    
 </head>
 <body>
     <header>
@@ -30,7 +32,7 @@
             <input type="submit" name="upload_button" value="OCRを実行"> 
         </form>
 
-        
+
         {% if ocr_text %}
         <h2>OCRの結果:</h2>
         <p>{{ ocr_text }}</p>
@@ -50,4 +52,6 @@
         <h3>INIAD＠team16-group4</h3>
     </footer>
 </body>
+
 </html>
+
