@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OCR Web App</title>
+</head>
+<body>
+    <h1>画像からテキストを抽出するう</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="OCRを実行">
+    </form>
+
+    {% if text %}
+    <h2>OCRの結果:</h2>
+    <p>{{ text }}</p>
+    {% endif %}
+</body>
+</html>

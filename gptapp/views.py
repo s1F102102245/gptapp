@@ -5,7 +5,11 @@ import openai
 import os
 from django.conf import settings
 import logging
-import requests
+
+from PIL import Image
+import pyocr
+from django import forms
+from .forms import ChatForm, ImageUploadForm
 
 # irequestsmport openai
 
@@ -59,7 +63,8 @@ def chat_with_gpt3(prompt_text):
     except Exception as e:
         return str(e)
 
-def chat_view(request):
+
+def chat_viewORI(request):
     chat_response = ""
     if request.method == "POST":
         form = ChatForm(request.POST)
@@ -70,3 +75,67 @@ def chat_view(request):
         form = ChatForm()
 
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
+
+
+    
+def ocr_view(request):
+    # Tesseractのパスを設定
+
+    pyocr.tesseract.TESSERACT_CMD = settings.TESSERACT_CMD
+    text = None
+
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            # アップロードされた画像を取得
+            uploaded_image = form.cleaned_data['image']
+
+            # 利用可能なOCRツールを取得
+            tools = pyocr.get_available_tools()
+            if len(tools) == 0:
+                text = "OCRツールが見つかりませんでした"
+            else:
+                tool = tools[0] # 最初のOCRツールを使用
+                image = Image.open(uploaded_image)      # 画像からテキストを抽出
+                text = tool.image_to_string(image, lang="jpn")                
+                text = text.replace(' ', '') # 不要なスペースを削除
+    else:
+        form = ImageUploadForm()
+
+    # OCRの結果をテンプレートに渡す
+    return render(request, 'gptapp/ocr.html', {'form': form, 'text': text})
+
+
+
+def chat_view(request):
+    pyocr.tesseract.TESSERACT_CMD = settings.TESSERACT_CMD
+    chat_response = ""
+    chat_form = ChatForm(request.POST or None, prefix='chat')
+
+    ocr_form = ImageUploadForm(request.POST or None, request.FILES or None, prefix='upload')
+    ocr_text = None
+
+    if 'chat_button' in request.POST:
+        chat_form = ChatForm(request.POST)
+        if chat_form.is_valid():
+            user_input = chat_form.cleaned_data['user_input']
+            chat_response = chat_with_gpt3(user_input)
+
+
+    elif 'upload_button' in request.POST:
+        if ocr_form.is_valid():
+            # アップロードされた画像を取得
+            uploaded_image1 = ocr_form.cleaned_data['image']
+
+            # 利用可能なOCRツールを取得
+            tools = pyocr.get_available_tools()
+            if len(tools) == 0:
+                ocr_text = "OCRツールが見つかりませんでした"
+            else:
+                tool = tools[0] # 最初のOCRツールを使用
+                image = Image.open(uploaded_image1)      # 画像からテキストを抽出
+                ocr_text = tool.image_to_string(image, lang="jpn")                
+                ocr_text = ocr_text.replace(' ', '') # 不要なスペースを削除
+
+    return render(request, 'gptapp/chat_template.html', {'chat_form': chat_form, 'chat_response': chat_response, 'ocr_form': ocr_form, 'ocr_text': ocr_text})
+
