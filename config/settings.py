@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gptapp',
     'corsheaders',
+    "betterforms",  # 追加
 ]
 
 MIDDLEWARE = [
