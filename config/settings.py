@@ -84,12 +84,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'iniad',  # データベース名
-        'USER': 'iniad',  # データベースユーザー名
-        'PASSWORD': 'Iniad2023?',  # データベースのパスワード
-        'HOST': 'localhost',  # データベースサーバーのホスト名（またはIPアドレス）
-        'PORT': '3306',  # データベースサーバーのポート番号
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # データベース名
     }
 }
 
