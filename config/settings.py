@@ -29,8 +29,8 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = ['3.112.171.82']
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['3.112.171.82', '127.0.0.1', '54.238.96.64']
+
 
 
 
@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'iniad',  # データベース名
+        'USER': 'iniad',  # データベースユーザー名
+        'PASSWORD': 'Iniad2023?',  # データベースのパスワード
+        'HOST': 'localhost',  # データベースサーバーのホスト名（またはIPアドレス）
+        'PORT': '3306',  # データベースサーバーのポート番号
     }
 }
 
