@@ -26,11 +26,39 @@
 
         <!-- OCRのフォームとテキスト表示を追加 -->
         <h2>画像からテキストを抽出する (OCR)</h2>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" class="ocr-form">
             {% csrf_token %}
             {{ ocr_form.as_p }}
             <input type="submit" name="upload_button" value="OCRを実行"> 
         </form>
+
+
+        <!-- 待機画面の動作 -->
+        <script>
+            document.querySelector('.chat-form').addEventListener('submit', function() {
+                document.getElementById('loading-indicator').style.display = 'block';
+            });
+        </script>
+
+        <script>
+            document.querySelector('.ocr-form').addEventListener('submit', function() {
+                document.getElementById('loading-indicator').style.display = 'block';
+            });
+        </script>
+
+        <div id="loading-indicator" style="text-align: center;">
+            <img src="{% static 'gptapp/loading-2.gif' %}" style="width: 300px; height: 200px;"alt="ロード中">
+            <p>ロード中...</p>
+        </div>
+
+        <script>
+            function hideLoadingIndicator() {
+                document.getElementById('loading-indicator').style.display = 'none';
+            }
+            hideLoadingIndicator();
+        </script>
+        <!-- 以上。 -->
+
 
 
         {% if ocr_text %}
@@ -49,7 +77,7 @@
     </main>
 
     <footer>
-        <h3>INIAD＠team16-group4</h3>
+        <h3>&copy; INIAD＠team16-group4</h3>
     </footer>
 </body>
 
