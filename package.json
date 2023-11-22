@@ -12,6 +12,7 @@
   "devDependencies": {
     "@aws-amplify/backend": "^0.5.5",
     "@aws-amplify/backend-cli": "^0.9.1",
+    "@vue/cli-service": "^5.0.0", 
     "typescript": "^5.3.2"
   }
 }
