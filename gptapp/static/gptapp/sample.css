@@ -44,6 +44,14 @@ main {
 
 
 
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+  
+
+
+
 /* フッタースタイリング */
 footer {
     background-color: #73bcad; /* 背景色をくすんだ色に設定 */
