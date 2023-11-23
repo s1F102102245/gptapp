@@ -18,3 +18,24 @@ nslookup ec2-3-112-13-1.ap-northeast-1.compute.amazonaws.com
 nslookup 3.112.13.1
 sudo dnf -y install telnet
 telnet localhost 80
+sudo yum update
+sudo yum install git
+git init
+git remote add orgin https://github.com/s1F102102245/gptapp
+vi .gitignore
+git push origin main
+git push origin master
+git remote -v
+git remote remove orgin
+git remote add origin https://github.com/s1F102102245/gptapp
+git remote -v
+git push origin main
+git push origin master
+git branch
+git branch main
+git add .
+git commit -m
+git commit -m "初めてのコミット"
+git branch main
+git checkout main
+git push origin main
