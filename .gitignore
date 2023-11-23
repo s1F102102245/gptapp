@@ -1,4 +1,2 @@
-# amplify
-node_modules
-.amplify
-amplifyconfiguration*
+
+local_settings.py
