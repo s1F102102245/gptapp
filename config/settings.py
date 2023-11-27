@@ -14,12 +14,13 @@ import pytesseract
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TESSERACT_CMD = os.path.join(BASE_DIR, 'Tesseract-OCR', 'tesseract.exe')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['3.112.171.82']
-ALLOWED_HOSTS = ['127.0.0.1']
-ALLOWED_HOSTS = ['ec2-54-199-195-159.ap-northeast-1.compute.amazonaws.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['ec2-54-199-195-159.ap-northeast-1.compute.amazonaws.com', 'localhost', '127.0.0.1', '3.112.171.82']
+
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -92,7 +93,7 @@ USE_I18N = True
 USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
