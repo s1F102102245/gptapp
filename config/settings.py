@@ -19,6 +19,8 @@ TESSERACT_CMD = os.path.join(BASE_DIR, 'Tesseract-OCR', 'tesseract.exe')
 
 ALLOWED_HOSTS = ['3.112.171.82']
 ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['ec2-54-199-195-159.ap-northeast-1.compute.amazonaws.com', 'localhost', '127.0.0.1']
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
