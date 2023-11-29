@@ -17,7 +17,7 @@ TESSERACT_CMD = os.path.join(BASE_DIR, 'Tesseract-OCR', 'tesseract.exe')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['ec2-54-199-195-159.ap-northeast-1.compute.amazonaws.com', 'ec2-35-73-166-7.ap-northeast-1.compute.amazonaws.com' 'localhost', '127.0.0.1', '3.112.171.82']
+ALLOWED_HOSTS = ['ec2-35-79-127-213.ap-northeast-1.compute.amazonaws.com','localhost', '127.0.0.1', '3.112.171.82']
 
 
 
