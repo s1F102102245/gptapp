@@ -121,7 +121,7 @@ def chat_view(request):
         # フォームが送信された場合でもOCRフォームの情報を保持
         ocr_text = request.POST.get('ocr_text', None)
 
-    elif 'upload_button' in request.POST:
+    if 'upload_button' in request.POST:
         if ocr_form.is_valid():
             uploaded_image1 = ocr_form.cleaned_data['image']
             tools = pyocr.get_available_tools()
