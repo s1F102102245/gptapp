@@ -1,13 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
-    <title>Template</title>
+    <title>First Page</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static '.../static/templates/gptapp/sample.css' %}">
 </head>
 
 <body>
-    <h1>Hello Template</h1>
+
+    <div class="center-box">
+        <h1>質問かい?勉強してるんだね!偉いぞ!!</h1>
+    <div>
+
+    <script>
+        document.body.onclick = function() {
+            const h1 = document.querySelector("h1");
+            h1.innerHTML = "今日の目標は3問!さあ!一緒に頑張ろう!";
+        };
+    </script>
+
 </body>
 
 </html>
