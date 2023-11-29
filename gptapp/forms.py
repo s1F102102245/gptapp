@@ -5,4 +5,4 @@ class ChatForm(forms.Form):
 
 
 class ImageUploadForm(forms.Form):
-    image = forms.ImageField(required=False)
+    image = forms.ImageField()
