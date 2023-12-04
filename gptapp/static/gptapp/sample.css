@@ -1,45 +1,54 @@
-/*PC*/
-
-/*1*/
-
-
-
-/*2*/
-
-.chat-box{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
+/*スクロール禁止*/
+body.no_scroll{
+    overflow: hidden;
 }
 
-.chat-left{
-    flex-basis: 50%;
+
+/*フレーム*/
+body{
+    background-image: url("frame.png");
+    user-select: none;
+    pointer-events: none;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    /*margin: 0vh;*/
 }
 
-.chat-right{
-    flex-basis: 50%;
-    text-align: right;
-}
+/*左上の円で使うアニメの設定*/
+@keyframes rotateRight {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
-.chat-message {
-    text-align: right;
+/*左上の円*/
+.rogo_circle{
+    position: relative;
+    user-select: none;
+    pointer-events: none;
+    margin-left: -40px;
+    margin-top: -40px;
+    filter: drop-shadow(2px 2px 2px rgba(140, 140, 140, 0.5));
+    
+    animation-name: rotateRight; /* アニメーション名 */
+    animation-duration: 8s; /* 一周するのに要する時間 */
+    animation-timing-function: linear; /* アニメーションの速度カーブ */
+    animation-iteration-count: infinite; /* アニメーションの繰り返し回数 (無限) */
+    transform-origin: center; /* 回転の中心点 */
 }
-.chat-response {
-    text-align: left;
-}
-
-/*3*/
-
-footer{
+/*左上のイヌ*/
+.hachi{
     position: absolute;
-    bottom: 0;
-    display: flex;
-}
-.chat-form {
-    bottom: 0;
-    display: flex;
-    flex-direction: row;
-}
+    user-select: none;
+    pointer-events: none;
+    margin-left: -136px;
+    margin-top:20px;
+    height: 90px;
+  }
 
-
-/*SmartPhone*/
+h1{
+    color: aqua;
+}
