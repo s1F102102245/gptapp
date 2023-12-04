@@ -34,7 +34,7 @@ body{
     filter: drop-shadow(2px 2px 2px rgba(140, 140, 140, 0.5));
     
     animation-name: rotateRight; /* アニメーション名 */
-    animation-duration: 8s; /* 一周するのに要する時間 */
+    animation-duration: 10s; /* 一周するのに要する時間 */
     animation-timing-function: linear; /* アニメーションの速度カーブ */
     animation-iteration-count: infinite; /* アニメーションの繰り返し回数 (無限) */
     transform-origin: center; /* 回転の中心点 */
@@ -48,6 +48,11 @@ body{
     margin-top:20px;
     height: 90px;
   }
+
+.form_part{
+    width: 100%;
+}
+
 
 h1{
     color: aqua;
