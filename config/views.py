@@ -40,4 +40,4 @@ def chat_view(request):
     else:
         form = ChatForm()
 
-    return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
+    return render(request, 'gptapp/index.html', {'form': form, 'chat_response': chat_response})

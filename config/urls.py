@@ -34,6 +34,6 @@ urlpatterns = [
     path('gptapp', gptapp.views.root, name='root'),
     path('gptapp/pattern/<username>/', gptapp.views.pattern, name='pattern'),
     path('gptapp/param/', gptapp.views.param, name='param'),
-    path('', gptapp.views.index, name="index"),
-    path('chat/', views.chat_view, name='chat_view'),
+    path('', views.chat_view, name="index"),
+    path('chat/',gptapp.views.index, name='chat_view'),
 ]
