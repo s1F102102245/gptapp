@@ -5,13 +5,8 @@ body.no_scroll{
 
 
 /*フレーム*/
-body{
-    background-image: url("frame.png");
-    user-select: none;
-    pointer-events: none;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    /*margin: 0vh;*/
+body{ 
+
 }
 
 /*左上の円で使うアニメの設定*/
@@ -24,34 +19,91 @@ body{
     }
   }
 
+/*フレーム*/
+.frame{
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+
+  width: 100%;
+  top: 0px;
+  left: 0px;
+
+  z-index:1;
+}
+
 /*左上の円*/
 .rogo_circle{
     position: relative;
     user-select: none;
     pointer-events: none;
+
     margin-left: -40px;
     margin-top: -40px;
     filter: drop-shadow(2px 2px 2px rgba(140, 140, 140, 0.5));
     
     animation-name: rotateRight; /* アニメーション名 */
-    animation-duration: 10s; /* 一周するのに要する時間 */
+    animation-duration: 15s; /* 一周するのに要する時間 */
     animation-timing-function: linear; /* アニメーションの速度カーブ */
     animation-iteration-count: infinite; /* アニメーションの繰り返し回数 (無限) */
     transform-origin: center; /* 回転の中心点 */
+
+    z-index:2;
 }
+
 /*左上のイヌ*/
 .hachi{
     position: absolute;
     user-select: none;
     pointer-events: none;
+
     margin-left: -136px;
     margin-top:20px;
     height: 90px;
+
+    z-index:3;
   }
 
+  /*入力欄の画像*/
 .form_part{
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+
     width: 100%;
+    top: 0px;
+    left: 0px;
+
+    z-index:0;
 }
+
+/*フォーム画像*/
+.form{
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+/*ボタン画像*/
+.button{
+  width: 100%;
+  user-select: none;
+  pointer-events: none;
+
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.form-container {
+  background: url('% static gptapp/form.png %') no-repeat center center; 
+  background-size: contain;
+}
+
 
 
 h1{

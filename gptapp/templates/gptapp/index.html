@@ -3,7 +3,7 @@
 <html lang="ja">
 
 <head>
-    <title>First Page</title>
+    <title>HACHI</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'gptapp/sample.css' %}">
 </head>
@@ -13,12 +13,23 @@
     <img src="{% static 'gptapp/rogo_circle.png' %}" class="rogo_circle">
     <img src="{% static 'gptapp/HACHI.png' %}" class="hachi">
 
+    <!-- フレーム -->
+    <img src="{% static 'gptapp/frame.png' %}" class="frame">
+
+    <!-- フォーム背景 -->
+    <img src="{% static 'gptapp/form_part.png' %}" class="form_part">
+
+    <!-- フォーム本体 -->
+    <form action="" method="post">
+        <!-- 入力フォーム -->
+        <input type="text" class="form-input" placeholder="質問をするワン！">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- ボタン -->
+        <button type="submit" class="form-submit" src="{% static 'gptapp/button.png' %}"></button>
+    </form>
 
 
-    <footer>
-        <img src="{% static 'gptapp/form_part.png' %}" class="form_part">
-    </footer>
-    
 <!--
     <div class="center-box">
         <h1>質問かい?勉強してるんだね!偉いぞ!!</h1>
