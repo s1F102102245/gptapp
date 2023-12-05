@@ -26,11 +26,11 @@ body{
   user-select: none;
   pointer-events: none;
  
-  width: 200%;
-  top: 0px;
-  left: 0px;
+  width: 130%;
+  top: 33%;
+  left: 50%;
 
-  transform: translate(0%, 0%);
+  transform: translate(50%, 50%);
   transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
   will-change: transform; /* Optimizes for animations */
 
@@ -116,6 +116,24 @@ body{
   left: 0px;
 }
 
+/*フォーム本体*/
+.chat-form{
+  border: 0px;
+  outline: 0px;
+
+  width: 500px;
+  height: 200px;
+
+  border-radius:50.5px;
+
+  top: 623px;
+  left: 505px;
+
+  position: absolute;
+
+  z-index:3;
+}
+
 /*提出ボタン*/
 .form-submit{
   border: 0px;
@@ -126,8 +144,8 @@ body{
 
   border-radius:50.5px;
 
-  top: 623px;
-  left: 1405px;
+  top: 0px;
+  left: 895px;
 
   background: none;
 
@@ -137,3 +155,4 @@ body{
 
   z-index:3;
 }
+
