@@ -6,9 +6,15 @@
     <title>HACHI</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'gptapp/sample.css' %}">
+    <script src="{% static 'gptapp/sample.js' %}"></script>
 </head>
 
 <body>
+    <!-- 背景画像 -->
+    <img src="{% static 'gptapp/grid.png' %}" class="grid">
+    <img src="{% static 'gptapp/map.png' %}" class="map">
+
+
     <!-- 左上の画像 -->
     <img src="{% static 'gptapp/rogo_circle.png' %}" class="rogo_circle">
     <img src="{% static 'gptapp/HACHI.png' %}" class="hachi">
@@ -19,14 +25,12 @@
     <!-- フォーム背景 -->
     <img src="{% static 'gptapp/form_part.png' %}" class="form_part">
 
-    <!-- フォーム本体 -->
-    <form action="" method="post">
-        <!-- 入力フォーム -->
-        <input type="text" class="form-input" placeholder="質問をするワン！">
+    <!-- 入力フォーム -->
+    <form method="post" class="form-input" enctype="multipart/form-data" src="{% static 'gptapp/form.png' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <!-- ボタン -->
-        <button type="submit" class="form-submit" src="{% static 'gptapp/button.png' %}"></button>
+        <!-- 送信ボタン -->
+        <input type="image" class="form-submit" src="{% static 'gptapp/button.png' %}" alt="Submit">
     </form>
 
 
