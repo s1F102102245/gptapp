@@ -36,6 +36,17 @@
         <button type="submit" class="form-submit"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
     </form>
 
+    <!-- 出力画像 -->
+    <img src="{% static 'gptapp/hukidashi.png' %}" class="hukidashi">
+
+    <!-- 出力テキスト -->
+    {% if chat_response %}
+        <section class="chat-response">
+            <p class="hachi_output">{{ chat_response }}</p>
+        </section>
+    {% endif %}
+
+
 <!--
     <div class="center-box">
         <h1>質問かい?勉強してるんだね!偉いぞ!!</h1>

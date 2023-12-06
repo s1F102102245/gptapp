@@ -156,3 +156,23 @@ body{
   z-index:3;
 }
 
+/*出力画像*/
+.hukidashi{
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+/*出力フォーム*/
+.hachi_output{
+  position: absolute;
+  height: 400px;
+  width: 700px;
+
+  bottom: 230px;
+  left:465px;
+}
