@@ -1,32 +1,64 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="ja">
+​
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>勉強のモチベーションアップ</title>
+    <title>HACHI</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'gptapp/sample.css' %}">
+    <script src="{% static 'gptapp/sample.js' %}"></script>
 </head>
+​
 <body>
-    <header>
-        <h1>Poket Sensei</h1>
-    </header>
-    <main>
-        <section class="motivation-text">
-            <h2>ChatGPTと勉強しよう！</h2>
-            <p>勉強を始める新しい一日が始まりました。目標に向かって一歩前進しましょう。わからないことがあればチャットで質問してみましょう。GPT-3があなたをサポートします。</p>
+    <!-- 背景画像 -->
+    <img src="{% static 'gptapp/grid.png' %}" class="grid">
+    <img src="{% static 'gptapp/map.png' %}" class="map">
+​
+​
+    <!-- 左上の画像 -->
+    <img src="{% static 'gptapp/rogo_circle.png' %}" class="rogo_circle">
+    <img src="{% static 'gptapp/HACHI.png' %}" class="hachi">
+​
+    <!-- フレーム -->
+    <img src="{% static 'gptapp/frame.png' %}" class="frame">
+​
+    <!-- フォーム背景 -->
+    <img src="{% static 'gptapp/form_part.png' %}" class="form_part">
+​
+    <!-- 入力フォーム背景 -->
+    <img src="{% static 'gptapp/form.png' %}" class="form">
+​
+    <!-- 入力フォーム -->
+    <form action="" method="post" class="chat-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- 送信ボタン -->
+        <button type="submit" class="form-submit"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
+    </form>
+​
+    <!-- 出力画像 -->
+    <img src="{% static 'gptapp/hukidashi.png' %}" class="hukidashi">
+​
+    <!-- 出力テキスト -->
+    {% if chat_response %}
+        <section class="chat-response">
+            <p class="hachi_output">{{ chat_response }}</p>
         </section>
-        <section class="motivation-image" style="text-align: center;">
-            <img src="{% static 'gptapp/loading-2.gif' %}" style="width: 600px; height: 300px;"alt="ロード中">
-        </section>
-        <section class="get-started" style="text-align: center;">
-            <h3>さあ、はじめましょう!!</h3>
-            <a href="chat" class="chat-button">メインサービスへ</a>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; INIAD＠team16-group4</p>
-    </footer>
+    {% endif %}
+​
+​
+<!--
+    <div class="center-box">
+        <h1>質問かい?勉強してるんだね!偉いぞ!!</h1>
+    <div>
+​
+    <script>
+        document.body.onclick = function() {
+            const h1 = document.querySelector("h1");
+            h1.innerHTML = "今日の目標は3問!さあ!一緒に頑張ろう!";
+        };
+    </script>
+-->
 </body>
+​
 </html>
