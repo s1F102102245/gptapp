@@ -1,27 +1,24 @@
 databases:
   - name: django.db.backends.sqlite3
-  - databaseName: BASE_DIR / db.sqlite3
-  plan: free
-  - user: django_user
-  - password: securepassword123
+    plan: free
 
 
 services:
   - type: web
-  - name : gptapp
-  - env: python
-  plan: free
-  buildCommand: "python manage.py migrate"
-  startCommand: "gunicorn mydjangoapp.wsgi:application --bind 0.0.0.0:8000"
-  envVars:
-    - key: DJANGO_SECRET_KEY
-      value: "django-insecure-k4wmb6zn7*m=c+c9wi(o*_d1^9$wy8j9r%xo1&qn74q=*mc%po"
-    - key: DEBUG
-      value: "True"
-    - key: DATABASE_URL
-      fromDatabase:
-        name: django.db.backends.sqlite3
-        property: connectionString
-    - key: PYTHON_VERSION
-      value: 3.11.4
+    name : gptapp
+    env: python
+    plan: free
+    buildCommand: "python manage.py migrate"
+    startCommand: "gunicorn mydjangoapp.wsgi:application --bind 0.0.0.0:8000"
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        value: "django-insecure-k4wmb6zn7*m=c+c9wi(o*_d1^9$wy8j9r%xo1&qn74q=*mc%po"
+      - key: DEBUG
+        value: "True"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: django.db.backends.sqlite3
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.11.4
       
