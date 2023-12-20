@@ -2,8 +2,7 @@ databases:
   - name: django.db.backends.sqlite3
     databaseName: BASE_DIR / db.sqlite3
     plan: free
-    user: django_user
-    password: securepassword123
+
 
 
 services:
