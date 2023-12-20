@@ -8,7 +8,7 @@ services:
     name : gptapp
     env: python
     plan: free
-    buildCommand: "python manage.py migrate"
+    buildCommand: './build.sh'
     startCommand: "gunicorn mydjangoapp.wsgi:application --bind 0.0.0.0:8000"
     envVars:
       - key: DJANGO_SECRET_KEY
