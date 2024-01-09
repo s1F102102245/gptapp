@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HACHI</title>
-    <link rel="stylesheet" href="{% static 'gptapp/sample.css' %}">
+    <link rel="stylesheet" href="{% static '' %}">
     <script src="{% static 'gptapp/sample.js' %}"></script>
     <!-- <script src="{% static 'gptapp/chat_script.js' %}"></script>  -->
     
@@ -39,7 +39,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <!-- 送信ボタン -->
-            <button type="submit" class="form-submit"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
+            <button type="submit" class="chat-button"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
         </form>
         
         <!-- 出力画像 -->
@@ -66,7 +66,7 @@
         </script>
     -->
 
-
+<!--
     {% if ocr_text %}
     <h2>抽出したテキスト:</h2>
     <p>{{ ocr_text }}</p>
@@ -78,8 +78,9 @@
         <p>{{ chat_response }}</p>
     </section>
     {% endif %}
+-->
 
-    <!-- OCRのフォームとテキスト表示を追加 -->
+    <!-- OCRのフォームとテキスト表示を追加 
     <h2>画像からテキストを抽出する (OCR)</h2>
     <form action="" method="post" class="ocr-form" enctype="multipart/form-data">
         {% csrf_token %}
@@ -90,10 +91,10 @@
         </div>
     </form>
     <br>
-
+-->
 <!--  -->
 
-    <!-- 待機画面の動作 -->
+    <!-- 待機画面の動作 
     <script>
         document.querySelector('.chat-form').addEventListener('submit', function() {
             document.getElementById('loading-indicator').style.display = 'block';
@@ -115,7 +116,7 @@
         }
         hideLoadingIndicator();
     </script>
-    <!-- 以上。 -->
+    以上。 -->
     </main>
 
 </body>
