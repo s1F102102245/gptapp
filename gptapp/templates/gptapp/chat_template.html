@@ -12,9 +12,15 @@
     
 </head>
 <body>
+    <!--
     <header>
         <h1>Poket Sensei</h1>
     </header>
+    -->
+    <div>
+        <img src="{% static 'gptapp/map.png}">
+    </div>
+
     <main>
         <h2>question for chat gpt</h2>
         <form action="" method="post" class="chat-form">
@@ -23,9 +29,18 @@
             <button type="submit" name="chat_button" class="chat-button" style="margin: 0 auto; display: block;">GPT-3に質問する</button>
         </form>
         <br>
+        {% if chat_response %}
+        <section class="chat-response">
+            <h2>回答:</h2>
+            <p>{{ chat_response }}</p>
+        </section>
+        {% endif %} 
 
 
-
+        {% if ocr_text %}
+        <h2>抽出したテキスト:</h2>
+        <p>{{ ocr_text }}</p>
+        {% endif %}
         <!-- OCRのフォームとテキスト表示を追加 -->
         <h2>画像からテキストを抽出する (OCR)</h2>
         <form action="" method="post" class="ocr-form" enctype="multipart/form-data">
@@ -39,51 +54,35 @@
         <br>
 
 
-       
-        <!-- 待機画面の動作 -->
-        <script>
-            document.querySelector('.chat-form').addEventListener('submit', function() {
-                document.getElementById('loading-indicator').style.display = 'block';
-            });
-        </script>
-        <script>
-            document.querySelector('.ocr-form').addEventListener('submit', function() {
-                document.getElementById('loading-indicator').style.display = 'block';
-            });
-        </script>
-        <div id="loading-indicator" style="text-align: center;">
-            <img src="{% static 'gptapp/loading-2.gif' %}" style="width: 300px; height: 200px;"alt="ロード中">
-            <p>ロード中...</p>
-        </div>
-
-        <script>
-            function hideLoadingIndicator() {
-                document.getElementById('loading-indicator').style.display = 'none';
-            }
-            hideLoadingIndicator();
-        </script>
-        <!-- 以上。 -->
+        
 
 
 
-        {% if ocr_text %}
-        <h2>抽出したテキスト:</h2>
-        <p>{{ ocr_text }}</p>
-        {% endif %}
-
-
-
-        {% if chat_response %}
-        <section class="chat-response">
-            <h2>回答:</h2>
-            <p>{{ chat_response }}</p>
-        </section>
-        {% endif %}
+        
     </main>
+    <!-- 待機画面の動作 -->
+    <script>
+        document.querySelector('.chat-form').addEventListener('submit', function() {
+            document.getElementById('loading-indicator').style.display = 'block';
+        });
+    </script>
+    <script>
+        document.querySelector('.ocr-form').addEventListener('submit', function() {
+            document.getElementById('loading-indicator').style.display = 'block';
+        });
+    </script>
+    <div id="loading-indicator" style="text-align: center;">
+        <img src="{% static 'gptapp/loading-2.gif' %}" style="width: 300px; height: 200px;"alt="ロード中">
+        <p>ロード中...</p>
+    </div>
 
-    <footer>
-        <h3>&copy; INIAD＠team16-group4</h3>
-    </footer>
+    <script>
+        function hideLoadingIndicator() {
+            document.getElementById('loading-indicator').style.display = 'none';
+        }
+        hideLoadingIndicator();
+    </script>
+    <!-- 以上。 -->
 </body>
 
 </html>
