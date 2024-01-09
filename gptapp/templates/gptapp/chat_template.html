@@ -35,21 +35,18 @@
         <img src="{% static 'gptapp/form.png' %}" class="form">
         
         <!-- 入力フォーム -->
-        <form action="" method="post" class="chat_form">
+        <!-- 文字 -->
+        <input type="text" method="post" class="chat_form">
+            {% csrf_token %}
+            {{ form.as_p }}
+        <!-- 画像 -->
+        <form type="text" method="post" class="chat-form">
             {% csrf_token %}
             {{ form.as_p }}
             <!-- 送信ボタン -->
             <button type="submit" class="form-submit"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
         </form>
         
-        <!-- 入力フォーム -->
-        <form action="" method="post" class="chat-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <!-- 送信ボタン -->
-            <button type="submit" class="form-submit"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
-        </form>
-
         <!-- 出力画像 -->
         <img src="{% static 'gptapp/hukidashi.png' %}" class="hukidashi">
         
