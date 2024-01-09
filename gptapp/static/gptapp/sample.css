@@ -1,24 +1,78 @@
-
-.image1 {
-    background-image: url('map.png');
-    background-repeat: no-repeat;
-    position: absolute; /* 絶対的な位置を指定 */
-    width: 150vw; 
-    height: 150vh; 
-    z-index: -2; /* 表示順序を設定 */
-    transition: transform 0.2s ease-out; /* 変化を滑らかにするトランジション */
+.map{
+    position: fixed;
+    user-select: none;
+    pointer-events: none;
+     
+    width: 160%;
+    top: 300px;
+    left: 700px;
+  
+    transform: translate(100%, 100%);
+    transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
+    will-change: transform; /* Optimizes for animations */
+  
+    z-index:-2;
+  }
     
-    overflow: visible;
-    }
-.image2 {
-    background-image: url('grid.png');
-    position: absolute; /* 絶対的な位置を指定 */
-    width: 150vw; 
-    height: 150vh; 
-    z-index: -1; /* 表示順序を設定（image1より上に表示されるように） */
-    overflow: visible;
-    }
+  /*背景grid*/
+  .grid{
+    position: fixed;
+    user-select: none;
+    pointer-events: none;
+     
+    width: 130%;
+    top: 50%;
+    left: 50%;
+  
+    transform: translate(50%, 50%);
+    transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
+    will-change: transform; /* Optimizes for animations */
+    
+    z-index:-1;
+  }
 
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 10px; /* 上下のボーダーの太さ */
+    background-color: yellow;
+    z-index: 9999;
+}
+
+body::before {
+    top: 0;
+}
+
+body::after {
+    bottom: 0;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 10px; /* 左右のボーダーの太さ */
+    height: 100%;
+    background-color: yellow;
+    z-index: 9999;
+}
+
+body::before {
+    left: 0;
+}
+
+body::after {
+    right: 0;
+}
 
 header {
     background-color: #3f865d;
@@ -47,8 +101,10 @@ body{
     background-repeat: no-repeat;
     position: relative; /* 相対的な位置を指定 */
     z-index: 1; /* 表示順序を設定 */
-    border: 10px solid black;
 }
+
+
+
 
 
 

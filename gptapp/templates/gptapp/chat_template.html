@@ -11,11 +11,10 @@
     <!-- <script src="{% static 'gptapp/chat_script.js' %}"></script>  -->
     
 </head>
-<body>
-    <div class="image1">
-    </div>
-    <div class="image2">
-    </div>
+<body class="yellow">
+    
+    <img src="{% static 'gptapp/grid.png' %}" class="grid">
+    <img src="{% static 'gptapp/map.png' %}" class="map">
     <!--
     <header>
         <h1>Poket Sensei</h1>
@@ -74,7 +73,7 @@
         });
     </script>
     <div id="loading-indicator" style="text-align: center;">
-        <img src="{% static 'gptapp/loading-2.gif' %}" style="width: 300px; height: 200px;"alt="ロード中">
+        <img src="{% static 'gptapp/loading-2.gif' %}" style="width: 300px; height: 200px;" alt="ロード中">
         <p>ロード中...</p>
     </div>
 
@@ -86,34 +85,38 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var image1 = document.querySelector('.image1');
+    var grid = document.querySelector('.grid');
 
-            document.addEventListener('mousemove', function(event) {
-                var rect = image1.getBoundingClientRect();
-                var centerX = rect.left + (rect.width / 2);
-                var centerY = rect.top + (rect.height / 2);
+    document.addEventListener('mousemove', function(event) {
+        var rect = grid.getBoundingClientRect();
+        var centerX = rect.left + (rect.width/2);
+        var centerY = rect.top + (rect.height/2); // "rect.top" を "rect.top" に修正
+        
+        // Calculate the distance from the center of the image to the mouse
+        var deltaX = (event.clientX - centerX) / 10; // Dividing by 10 to slow the movement
+        var deltaY = (event.clientY - centerY) / 10; // Dividing by 10 to slow the movement
 
-                var deltaX = (event.clientX - centerX) / 10;
-                var deltaY = (event.clientY - centerY) / 10;
+        // Apply the transformation to the image in the reverse direction
+        grid.style.transform = `translate(-50%, -50%) translate(${deltaX}px, ${deltaY}px)`;
+    });
+});
 
-                image1.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-            });
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    var grid = document.querySelector('.map');
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var image2 = document.querySelector('.image2');
+    document.addEventListener('mousemove', function(event) {
+        var rect = grid.getBoundingClientRect();
+        var centerX = rect.left + (rect.width / 2);
+        var centerY = rect.top + (rect.height / 2); // "rect.top" を "rect.top" に修正
+        
+        // Calculate the distance from the center of the image to the mouse
+        var deltaX = (event.clientX - centerX) / 5; // Dividing by 10 to slow the movement
+        var deltaY = (event.clientY - centerY) / 5; // Dividing by 10 to slow the movement
 
-            document.addEventListener('mousemove', function(event) {
-                var rect = image2.getBoundingClientRect();
-                var centerX = rect.left + (rect.width / 2);
-                var centerY = rect.top + (rect.height / 2);
-
-                var deltaX = (event.clientX - centerX) / 5; // 画像2用の適切な係数を設定
-                var deltaY = (event.clientY - centerY) / 5; // 画像2用の適切な係数を設定
-
-                image2.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-            });
-        });
+        // Apply the transformation to the image in the reverse direction
+        grid.style.transform = `translate(-50%, -50%) translate(${deltaX}px, ${deltaY}px)`;
+    });
+});
 
     </script>
 </body>
