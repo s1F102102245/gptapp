@@ -21,13 +21,7 @@
         <h1>Poket Sensei</h1>
     </header>
     -->
-    <div>
-        <!-- 背景画像 
-        <img src="{% static 'gptapp/grid.png' %}" class="grid">
-        <img src="{% static 'gptapp/map.png' %}" class="map">
-        -->
-    </div>
-
+    
     <main>
         <h2>question for chat gpt</h2>
         <form action="" method="post" class="chat-form">
@@ -91,7 +85,36 @@
         hideLoadingIndicator();
     </script>
     <script>
-        
+        document.addEventListener('DOMContentLoaded', function() {
+            var image1 = document.querySelector('.image1');
+
+            document.addEventListener('mousemove', function(event) {
+                var rect = image1.getBoundingClientRect();
+                var centerX = rect.left + (rect.width / 2);
+                var centerY = rect.top + (rect.height / 2);
+
+                var deltaX = (event.clientX - centerX) / 10;
+                var deltaY = (event.clientY - centerY) / 10;
+
+                image1.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var image2 = document.querySelector('.image2');
+
+            document.addEventListener('mousemove', function(event) {
+                var rect = image2.getBoundingClientRect();
+                var centerX = rect.left + (rect.width / 2);
+                var centerY = rect.top + (rect.height / 2);
+
+                var deltaX = (event.clientX - centerX) / 5; // 画像2用の適切な係数を設定
+                var deltaY = (event.clientY - centerY) / 5; // 画像2用の適切な係数を設定
+
+                image2.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+            });
+        });
+
     </script>
 </body>
 

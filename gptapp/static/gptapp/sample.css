@@ -1,28 +1,23 @@
 
-body {
-    margin: 0; /* ページのマージンをゼロに設定 */
-    overflow: hidden;
-  }
-
-  .image1 {
+.image1 {
     background-image: url('map.png');
-
     background-repeat: no-repeat;
     position: absolute; /* 絶対的な位置を指定 */
-    width: 100vw; /* ビューポートの幅いっぱいに広げる */
-    height: 100vh; /* ビューポートの高さいっぱいに広げる */
+    width: 150vw; 
+    height: 150vh; 
     z-index: -2; /* 表示順序を設定 */
     transition: transform 0.2s ease-out; /* 変化を滑らかにするトランジション */
-  }
-  .image2 {
+    
+    overflow: visible;
+    }
+.image2 {
     background-image: url('grid.png');
- 
-    background-repeat: no-repeat;
     position: absolute; /* 絶対的な位置を指定 */
-    width: 100vw; /* ビューポートの幅いっぱいに広げる */
-    height: 100vh; /* ビューポートの高さいっぱいに広げる */
+    width: 150vw; 
+    height: 150vh; 
     z-index: -1; /* 表示順序を設定（image1より上に表示されるように） */
-  }
+    overflow: visible;
+    }
 
 
 header {
@@ -44,12 +39,15 @@ h2 {
 }
 
 body{
+    margin: 0; /* ページのマージンをゼロに設定 */
+    overflow: hidden;
     background-image: url('map.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative; /* 相対的な位置を指定 */
     z-index: 1; /* 表示順序を設定 */
+    border: 10px solid black;
 }
 
 
@@ -61,6 +59,7 @@ main {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    
     
 }
 
