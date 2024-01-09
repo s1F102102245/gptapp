@@ -6,7 +6,7 @@ body {
 
   .image1 {
     background-image: url('map.png');
-    background-size: cover;
+
     background-repeat: no-repeat;
     position: absolute; /* 絶対的な位置を指定 */
     width: 100vw; /* ビューポートの幅いっぱいに広げる */
@@ -16,13 +16,12 @@ body {
   }
   .image2 {
     background-image: url('grid.png');
-    background-size: cover;
+ 
     background-repeat: no-repeat;
     position: absolute; /* 絶対的な位置を指定 */
     width: 100vw; /* ビューポートの幅いっぱいに広げる */
     height: 100vh; /* ビューポートの高さいっぱいに広げる */
     z-index: -1; /* 表示順序を設定（image1より上に表示されるように） */
-    transform-origin: center center;
   }
 
 
