@@ -38,9 +38,9 @@
         <img src="{% static 'gptapp/form.png' %}" class="form">
         
         <!-- 入力フォーム -->
-        <form class="form_part">
+        <form class="form_part" style="z-index:10;">
             <!-- 文字 -->
-            <input type="text" method="post" class="chat_form" style="margin-left: 500px; margin-top: 622px; z-index:10px;">
+            <input type="text" method="post" class="chat_form" style="margin-left: 500px; margin-top: 622px; z-index:10;">
                 {% csrf_token %}
                 {{ form.as_p }}
             <!-- 画像 -->
