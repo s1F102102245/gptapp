@@ -1,6 +1,31 @@
 
+body {
+    margin: 0; /* ページのマージンをゼロに設定 */
+    overflow: hidden;
+  }
 
-/* Apply styles to header */
+  .image1 {
+    background-image: url('map.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute; /* 絶対的な位置を指定 */
+    width: 100vw; /* ビューポートの幅いっぱいに広げる */
+    height: 100vh; /* ビューポートの高さいっぱいに広げる */
+    z-index: -2; /* 表示順序を設定 */
+    transition: transform 0.2s ease-out; /* 変化を滑らかにするトランジション */
+  }
+  .image2 {
+    background-image: url('grid.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute; /* 絶対的な位置を指定 */
+    width: 100vw; /* ビューポートの幅いっぱいに広げる */
+    height: 100vh; /* ビューポートの高さいっぱいに広げる */
+    z-index: -1; /* 表示順序を設定（image1より上に表示されるように） */
+    transform-origin: center center;
+  }
+
+
 header {
     background-color: #3f865d;
     color: #fff;
@@ -17,6 +42,15 @@ header h1 {
 
 h2 {
     font-family: "Comic Sans MS";
+}
+
+body{
+    background-image: url('map.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* 相対的な位置を指定 */
+    z-index: 1; /* 表示順序を設定 */
 }
 
 
@@ -88,3 +122,5 @@ footer {
 .chat-response p {
     font-size: 16px;
 }
+
+

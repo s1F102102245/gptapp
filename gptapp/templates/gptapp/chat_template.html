@@ -12,13 +12,20 @@
     
 </head>
 <body>
+    <div class="image1">
+    </div>
+    <div class="image2">
+    </div>
     <!--
     <header>
         <h1>Poket Sensei</h1>
     </header>
     -->
     <div>
-        <img src="{% static 'gptapp/map.png}">
+        <!-- 背景画像 
+        <img src="{% static 'gptapp/grid.png' %}" class="grid">
+        <img src="{% static 'gptapp/map.png' %}" class="map">
+        -->
     </div>
 
     <main>
@@ -61,6 +68,7 @@
         
     </main>
     <!-- 待機画面の動作 -->
+
     <script>
         document.querySelector('.chat-form').addEventListener('submit', function() {
             document.getElementById('loading-indicator').style.display = 'block';
@@ -81,6 +89,23 @@
             document.getElementById('loading-indicator').style.display = 'none';
         }
         hideLoadingIndicator();
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const image1 = document.getElementById('image1');
+            const image2 = document.getElementById('image2');
+
+            document.addEventListener('mousemove', function (e) {
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+
+                // 画像2をマウスの位置に追従させる
+                image2.style.left = `${mouseX}px`;
+                image2.style.top = `${mouseY}px`;
+
+                const scale = 1.5; // 任意の拡大率
+                image2.style.transform = `scale(${scale})`;
+                });
+        });
     </script>
     <!-- 以上。 -->
 </body>
