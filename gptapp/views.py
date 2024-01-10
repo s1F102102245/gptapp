@@ -140,3 +140,38 @@ def chat_view(request):
     return render(request, 'gptapp/chat_template.html', {'chat_form': chat_form, 'chat_response': chat_response, 'ocr_form': ocr_form, 'ocr_text': ocr_text})
 
 
+
+def New_chat_views(request):
+    pyocr.tesseract.TESSERACT_CMD = settings.TESSERACT_CMD
+    chat_response = ""
+    ocr_text = None
+
+    chat_form = ChatForm(request.POST or None, prefix='chat')
+    ocr_form = ImageUploadForm(request.POST or None, request.FILES or None, prefix='upload')
+
+    if 'chat_button' in request.POST:
+        if chat_form.is_valid():
+            user_input = chat_form.cleaned_data['user_input']
+            chat_response = chat_with_gpt3(user_input)
+        # フォームが送信された場合でもOCRフォームの情報を保持
+        ocr_text = request.POST.get('ocr_text', None)
+
+    if 'upload_button' in request.POST:
+        if ocr_form.is_valid():
+            uploaded_image1 = ocr_form.cleaned_data['image']
+            tools = pyocr.get_available_tools()
+            if len(tools) == 0:
+                ocr_text = "OCRツールが見つかりませんでした"
+            else:
+                tool = tools[0]
+                image = Image.open(uploaded_image1)
+                ocr_text = tool.image_to_string(image, lang="jpn")
+                ocr_text = ocr_text.replace(' ', '')
+
+        # フォームが送信された場合でもチャットフォームの情報を保持
+        user_input = request.POST.get('user_input', None)
+        chat_response = chat_with_gpt3(user_input)
+
+    return render(request, 'gptapp/chat_template.html', {'chat_form': chat_form, 'chat_response': chat_response, 'ocr_form': ocr_form, 'ocr_text': ocr_text})
+
+
