@@ -38,13 +38,11 @@
         <img src="{% static 'gptapp/form.png' %}" class="form">
         
         <!-- 入力フォーム -->
-        <form class="form_part" style="z-index:10;">
-            <!-- 文字 -->
-            <input type="text" method="post" class="chat_form" style="margin-left: 500px; margin-top: 622px; z-index:10;">
+        <form action="" method="post" class="chat-form">
                 {% csrf_token %}
                 {{ form.as_p }}
             <!-- 画像 -->
-            <input type="file" method="post" accept="image/png, image/jpeg" class="img_form" style="margin-left: 50px; margin-top: 620px; z-index: 10;">
+            <input type="file" method="post" class="img_form" style="margin-left: 50px; margin-top: 620px; z-index: 10;">
                 {% csrf_token %}
                 {{ form.as_p }}
             <!-- 送信ボタン -->
