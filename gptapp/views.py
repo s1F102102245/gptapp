@@ -78,7 +78,6 @@ def chat_viewORI(request):
 
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
 
-"""
 def ocr_view(request):
     # Tesseractのパスを設定
 
@@ -104,8 +103,7 @@ def ocr_view(request):
         form = ImageUploadForm()
 
     # OCRの結果をテンプレートに渡す
-    return render(request, 'gptapp/ocr.html', {'form': form, 'text': text})
-"""
+    return render(request, 'gptapp/chat_template.html', {'form': form, 'text': text})
 
 
 def chat_view(request):

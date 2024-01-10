@@ -30,6 +30,7 @@ def chat_with_gpt3(prompt_text):
     except Exception as e:
         return str(e)
 
+
 def chat_view(request):
     chat_response = ""
     if request.method == "POST":
