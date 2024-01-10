@@ -25,12 +25,13 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 
 
 
-
+'''
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('top/', gptapp.views.root),
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('favicon.ico'))),
 ]   + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+'''
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,5 +40,7 @@ urlpatterns = [
     path('gptapp/param/', gptapp.views.param, name='param'),
     path('gptapp/', gptapp.views.index, name="index"),
     path('chat/', gptapp.views.chat_view, name='chat_view'),
-    path('', gptapp.views.ocr_view, name='ocr_view'),
-] 
+    #path('', gptapp.views.ocr_view, name='ocr_view'),
+    path('', gptapp.views.chat_view, name='chat_view'),
+]   + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+  

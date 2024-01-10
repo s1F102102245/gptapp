@@ -2,186 +2,177 @@
 body{ 
     overflow: hidden;
   }
-/*背景map*/
+
+  /*背景map*/
   .map{
-  position: fixed;
-  user-select: none;
-  pointer-events: none;
-   
-  width: 160%;
-  top: 300px;
-  left: 700px;
-
-  transform: translate(100%, 100%);
-  transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
-  will-change: transform; /* Optimizes for animations */
-
-  z-index:-2;
-}
-  
-/*背景grid*/
-.grid{
-  position: fixed;
-  user-select: none;
-  pointer-events: none;
-   
-  width: 130%;
-  top: 33%;
-  left: 50%;
-
-  transform: translate(50%, 50%);
-  transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
-  will-change: transform; /* Optimizes for animations */
-  
-  z-index:-1;
-}
-  
-/*フレーム*/
-.frame{
-  position: absolute;
-  user-select: none;
-  pointer-events: none;
-  
-  width: 100%;
-  top: 0px;
-  left: 0px;
-  
-  z-index:1;
-}
-  
-/*左上の円で使うアニメの設定*/
-@keyframes rotateRight {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-  
-/*左上の円*/
-.rogo_circle{
-    position: relative;
+    position: fixed;
     user-select: none;
     pointer-events: none;
-
-    height: 600px;
-    width: 600px;
-
-    margin-left: -80px;
-    margin-top: -80px;
-    filter: drop-shadow(2px 2px 2px rgba(140, 140, 140, 0.5));
-    
-    animation-name: rotateRight; /* アニメーション名 */
-    animation-duration: 15s; /* 一周するのに要する時間 */
-    animation-timing-function: linear; /* アニメーションの速度カーブ */
-    animation-iteration-count: infinite; /* アニメーションの繰り返し回数 (無限) */
-    transform-origin: center; /* 回転の中心点 */
-
-    z-index:2;
-}
+   
+    width: 160%;
+    top: 300px;
+    left: 700px;
   
-/*左上のイヌ*/
-.hachi{
+    transform: translate(00%, 00%);
+    transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
+    will-change: transform; /* Optimizes for animations */
+  
+    z-index:-2;
+  }
+  
+  /*背景grid*/
+  .grid{
+    position: fixed;
+    user-select: none;
+    pointer-events: none;
+   
+    width: 130%;
+    top: 33%;
+    left: 50%;
+  
+    transform: translate(50%, 50%);
+    transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
+    will-change: transform; /* Optimizes for animations */
+  
+    z-index:-1;
+  }
+  
+  /*フレーム*/
+  .frame{
     position: absolute;
     user-select: none;
     pointer-events: none;
   
-    margin-left: 40px;
-    margin-top:20px;
-
-    height: 400px;
-    width: 400px;
-
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-
-    z-index:3;
-}
-  
-  /*入力欄の背景画像*/
-.form_part{
-    position: absolute;
-    user-select: none;
-    pointer-events: none;
-
     width: 100%;
     top: 0px;
     left: 0px;
   
-    z-index:0;
-}
+    z-index:1;
+  }
   
-/*フォーム画像*/
-.form{
-  position: absolute;
-  user-select: none;
-  pointer-events: none;
- 
-  width: 100%;
-  top: 0px;
-  left: 0px;
-}
+  /*左上の円で使うアニメの設定*/
+  @keyframes rotateRight {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
   
-/*フォーム本体*/
-.chat-form{
-  border: 0px;
-  outline: 0px;
+  /*左上の円*/
+  .rogo_circle{
+      position: relative;
+      user-select: none;
+      pointer-events: none;
   
-  width: 500px;
-  height: 200px;
+      margin-left: -40px;
+      margin-top: -40px;
+      filter: drop-shadow(2px 2px 2px rgba(140, 140, 140, 0.5));
+      
+      animation-name: rotateRight; /* アニメーション名 */
+      animation-duration: 15s; /* 一周するのに要する時間 */
+      animation-timing-function: linear; /* アニメーションの速度カーブ */
+      animation-iteration-count: infinite; /* アニメーションの繰り返し回数 (無限) */
+      transform-origin: center; /* 回転の中心点 */
   
-  border-radius:50.5px;
+      z-index:2;
+  }
   
-  top: 623px;
-  left: 505px;
+  /*左上のイヌ*/
+  .hachi{
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
   
-  position: absolute;
+      margin-left: -136px;
+      margin-top:20px;
+      height: 90px;
   
-  z-index:3;
-}
+      z-index:3;
+    }
   
-/*提出ボタン*/
-.form-submit{
-  border: 0px;
-  outline: 0px;
+    /*入力欄の背景画像*/
+  .form_part{
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
   
-  width: 121px;
-  height: 101px;
+      width: 100%;
+      top: 0px;
+      left: 0px;
   
-  border-radius:50.5px;
+      z-index:0;
+  }
   
-  top: 0px;
-  left: 895px;
+  /*フォーム画像*/
+  .form{
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    
+    width: 100%;
+    top: 0px;
+    left: 0px;
+  }
   
-  background: none;
+  /*フォーム本体*/
+  .chat-form{
+    border: 0px;
+    outline: 0px;
   
-  position: absolute;
+    width: 500px;
+    height: 200px;
   
-  overflow:visible;
+    border-radius:50.5px;
   
-  z-index:3;
-}
+    top: 623px;
+    left: 505px;
   
-/*出力画像*/
-.hukidashi{
-  position: absolute;
-  user-select: none;
-  pointer-events: none;
-   
-  width: 100%;
-  top: 0px;
-  left: 0px;
-}
+    position: absolute;
   
-/*出力フォーム*/
-.hachi_output{
-  position: absolute;
-  height: 400px;
-  width: 700px;
+    z-index:3;
+  }
   
-  bottom: 230px;
-  left:465px;
-}
+  /*提出ボタン*/
+  .form-submit{
+    border: 0px;
+    outline: 0px;
+  
+    width: 121px;
+    height: 101px;
+  
+    border-radius:50.5px;
+  
+    top: 0px;
+    left: 895px;
+  
+    background: none;
+  
+    position: absolute;
+  
+    overflow:visible;
+  
+    z-index:3;
+  }
+  
+  /*出力画像*/
+  .hukidashi{
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    
+    width: 100%;
+    top: 0px;
+    left: 0px;
+  }
+  
+  /*出力フォーム*/
+  .hachi_output{
+    position: absolute;
+    height: 400px;
+    width: 700px;
+  
+    bottom: 230px;
+    left:465px;
+  }

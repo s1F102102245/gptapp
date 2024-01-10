@@ -34,9 +34,11 @@ def param(request):
         text += '{} : {}, '.format(key, request.GET[key])
     return HttpResponse(text)
 
-def index(request):
-    return render(request, 'gptapp/index.html')
 
+##
+def index(request):
+    return render(request, 'gptapp/chat_template.html')
+##
 
 
 # openai.api_key = 'YyJx5cO36OlfXnnGP0GmGGHNArOKEllFISeit5mRE3d0Fq9vxqtiOW9jnN9VKn8UWIMMYUxXmOdnX7X3uMFLqnA'
@@ -76,8 +78,7 @@ def chat_viewORI(request):
 
     return render(request, 'gptapp/chat_template.html', {'form': form, 'chat_response': chat_response})
 
-
-    
+"""
 def ocr_view(request):
     # Tesseractのパスを設定
 
@@ -104,6 +105,7 @@ def ocr_view(request):
 
     # OCRの結果をテンプレートに渡す
     return render(request, 'gptapp/ocr.html', {'form': form, 'text': text})
+"""
 
 
 def chat_view(request):
