@@ -41,6 +41,6 @@ urlpatterns = [
     path('gptapp/', gptapp.views.index, name="index"),
     path('chat/', gptapp.views.chat_view, name='chat_view'),
     #path('', gptapp.views.ocr_view, name='ocr_view'),
-    path('', gptapp.views.ocr_view, name='New_chat_views'),
+    path('', gptapp.views.ocr_view, name='chat_view'),
 ]   + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
   

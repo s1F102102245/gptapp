@@ -12,7 +12,7 @@
   transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
   will-change: transform; /* Optimizes for animations */
 
-  z-index:-2;
+  z-index:-10;
 }
 
 /*背景grid*/
@@ -29,8 +29,9 @@
   transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
   will-change: transform; /* Optimizes for animations */
   
-  z-index:-1;
+  z-index:-9;
 }
+
   
 /*フレーム*/
 .frame{
@@ -43,7 +44,7 @@
   top: 0px;
   left: 0px;
   
-  z-index:1;
+  z-index:-8;
 }
   
 /*左上の円で使うアニメの設定*/
@@ -91,19 +92,19 @@
     right: 0px;
     bottom: 0px;
 
-    z-index:2;
+    z-index:5;
 }
 
 /*質問入力フォーム*/
 .chat-form{
   position: absolute;
-  z-index: 10;
+  z-index: -8;
 }
 
 /*画像入力部*/
 .img_form{
   position: absolute;
-  z-index: 10;
+  z-index: -8;
 }
 
 
@@ -117,7 +118,7 @@
     top: 0px;
     left: 0px;
   
-    z-index:0;
+    z-index:-8;
 }
   
 /*フォーム背景画像*/
@@ -128,24 +129,15 @@
   height: 100%;
   top: 0px;
   left: 0px;
+  z-index:-8;
 }
   
 /*フォーム白部分*/
 .chat-form{
-  border: 0px;
-  outline: 0px;
-  
-  width: 500px;
-  height: 200px;
-  
-  border-radius:50.5px;
-  
-  top: 623px;
-  left: 505px;
-  
+  left: 500px;
   position: absolute;
-  
-  z-index:999;
+  z-index:0;
+  top: 50px;
 }
   
 /*提出ボタン*/
@@ -170,7 +162,7 @@
   top: 0px;
   left: 0px;
 
-  z-index: 0;
+  z-index: -8;
 
 }
   
@@ -189,4 +181,47 @@
 /*スクロール禁止*/
 body{ 
   overflow: hidden;
+}
+
+.chat-response {
+  left: 500px;
+  position: absolute;
+  z-index:0;
+  top: 170px;
+
+}
+
+.ocrmozi {
+  left: 500px;
+  position: absolute;
+  z-index:0;
+  top: 300px;
+}
+.ocr-form {
+  left: 500px;
+  position: absolute;
+  z-index:0;
+  top: 400px;
+
+}
+
+.TTT {
+  left: 500px;
+  position: absolute;
+  z-index:0;
+  top: 450px;
+  padding: 800;
+  padding-right: 800;
+
+}
+
+
+.ocr-button{
+  left: 820px;
+  position: absolute;
+  z-index:0;
+  top: 320px;
+  z-index:9999;
+
+
 }

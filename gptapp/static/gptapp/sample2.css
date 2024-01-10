@@ -17,7 +17,7 @@ body{
   transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
   will-change: transform; /* Optimizes for animations */
 
-  z-index:-2;
+  z-index:-10;
 }
 
 /*背景grid*/
@@ -34,9 +34,10 @@ body{
   transition: transform 0.1s ease-out; /* Slow movement for smooth effect */
   will-change: transform; /* Optimizes for animations */
   
-  z-index:-1;
+  z-index:-9;
 }
-  
+
+
 /*フレーム*/
 .frame{
   position: absolute;
@@ -47,7 +48,7 @@ body{
   top: 0px;
   left: 0px;
   
-  z-index:1;
+  z-index:-8;
 }
   
 /*左上の円で使うアニメの設定*/
@@ -112,7 +113,7 @@ body{
     top: 0px;
     left: 0px;
   
-    z-index:0;
+    z-index:-8;
 }
   
 /*フォーム画像*/
@@ -124,24 +125,16 @@ body{
   width: 100%;
   top: 0px;
   left: 0px;
+  z-index:-8;
 }
   
 /*フォーム本体*/
 .chat-form{
-  border: 0px;
-  outline: 0px;
-  
-  width: 500px;
-  height: 200px;
-  
-  border-radius:50.5px;
-  
-  top: 623px;
-  left: 505px;
+  left: 500px;
   
   position: absolute;
   
-  z-index:999;
+  z-index:0;
 }
   
 /*提出ボタン*/
@@ -175,6 +168,8 @@ body{
   width: 100%;
   top: 0px;
   left: 0px;
+  z-index:-8;
+  
 }
   
 /*出力フォーム*/
