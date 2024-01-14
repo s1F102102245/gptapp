@@ -29,7 +29,7 @@
     <img src="{% static 'gptapp/form.png' %}" class="form">
 
     <!-- 入力フォーム -->
-    <form action="" method="post" class="chat-form">
+    <form action="" method="post" class="chat_form">
         {% csrf_token %}
         {{ form.as_p }}
         <!-- 送信ボタン -->
