@@ -1,5 +1,17 @@
-/*背景map*/
-  .map{
+.CCC {
+  text-align: center;
+ ;
+  margin-left: 250px;
+  margin-right: 180px;
+  margin-top: -150px;
+
+  
+
+
+}
+
+
+.map{
   position: fixed;
   user-select: none;
   pointer-events: none;
@@ -22,7 +34,7 @@
   pointer-events: none;
    
   width: 130%;
-  top: 33%;
+  top: 45%;
   left: 50%;
 
   transform: translate(50%, 50%);
@@ -189,18 +201,11 @@ body{
 }
 
 .chatbutton {
-  left: 855px;
+  left: 825px;
   position: absolute;
   top: 10px;
 }
 
-.chat-response {
-  left: 500px;
-  position: absolute;
-  z-index:0;
-  top: 100px;
-
-}
 
 .ocrmozi {
   left: 320px;
@@ -222,7 +227,7 @@ body{
   left: 350px;
   position: absolute;
   z-index:0;
-  top: 10px;
+  top: 16px;
   z-index:9999;
 
 

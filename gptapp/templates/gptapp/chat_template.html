@@ -43,11 +43,19 @@
         
         <!-- 出力画像 -->
         <img src="{% static 'gptapp/hukidashi.png' %}" class="hukidashi">  
+
+        <div class="CCC">
+        
         {% if chat_response %}
         <section class="chat-response">
         <p>{{ chat_response }}</p>
         </section>
         {% endif %}
+        
+        <!--
+        <p>もちろんです、ここでいくつかの表現をご紹介します。 1. "一石二鳥を狙う" - 一つの行動で二つ以上の結果を得ること。 2. "犬も歩けば棒に当たる" - 予想外のトラブルに出くわすこともあるという警告。 3. "暴風雨の後の青空" - トラブルの後には必ず良いことがあるという希望。 4. "一切れのパンでも二度美味しい" - 質素なものでも、それを二度楽しむことができる。 5. "雨後の筍のように" - ある事象が頻繁に発生する様子。 6. "七転び八起き" - 失敗しても何度でも立ち上がることの大切さ。 7. "百聞は一見に如かず" - 自分の目で見る価値が非常に大きいことを表しています。 8. "三日坊主" - 続かない人のこと、あるいはその行動。 9. "二兎を追う者は一兎をも得ず" - 一度に多くのことをしようとした結果、何も手に入らないという警告。 10. "猫に小判" - 価値のわからない人には価値のあるものを与えても無駄であるという意味。 11. "月とすっぽん" - 二つのものの差が非常に大きいこと。 12. "後悔先に立たず" - 行動を起こす前に考えることの重要性。 13. "時は金なり" - 時間は非常に貴重であるという考え。 14. "出る杭は打たれる" - 周りと異なる行動をとると、批判される可能性があるという警告。 15. "目からウロコが落ちる" - 新たな知識を得て驚くこと。 16. "備えあれば憂いなし" - 事前の準備が心配事を減らすという考え。 17. "火のない所に煙は立たず" - 噂や疑いがある場所には何らかの事実があるという考え。 </p>
+        -->
+        </div>
 
         <div class="OOO">
             <h3 class="ocrmozi">画像からテキストを抽出(ocr)</h3>
@@ -67,12 +75,14 @@
         <form action="" method="post" class="chat-form">
             {% csrf_token %}
             {{ chat_form.as_p }}
-            <button type="submit" name="chat_button" class="chatbutton" style="margin: 0 auto; display: block;">GPT-3に質問する</button>
+            <button type="submit" name="chat_button" class="chatbutton" style="margin: 0 auto; display: block;">
+                <img src="{% static 'gptapp/button.png' %}" alt="Image" style="width: 90px; height: 85px;">
+            </button>
         </form>
         
         <div id="ocrText" style="display: none;">
             {% if ocr_text %}
-                <h2>抽出したテキスト:</h2>
+                <h3>抽出したテキスト:</h3>
                 <p>{{ ocr_text }}</p>
             {% endif %}
         </div>
