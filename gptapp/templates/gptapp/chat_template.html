@@ -26,7 +26,7 @@
         <img src="{% static 'gptapp/map.png' %}" class="map">
         
         
-        <!-- 左上の画像 -->
+        <!-- 左上の円と犬 -->
         <img src="{% static 'gptapp/rogo_circle.png' %}" class="rogo_circle" style="width:250px; height: 250px;">
         <img src="{% static 'gptapp/HACHI.png' %}" class="hachi" style="width:100px; height:100px; margin-left: 25px;">
         
@@ -42,6 +42,9 @@
         <!-- 出力画像 -->
         <img src="{% static 'gptapp/hukidashi.png' %}" class="hukidashi">  
 
+        <!-- 右上のしおり -->
+        <img src="{% static 'gptapp/shiori.png' %}" class="shiori">
+
 
 
         <!-------------------------ここから本体------------------------------>
@@ -56,10 +59,10 @@
         {% endif %}
         
         <!-- チャットフォーム -->
-        <td><form action="" method="post" class="chat-form"></td>
+        <form action="" method="post" class="chat-form">
             {% csrf_token %}
             {{ chat_form.as_p }}
-            <td><button type="submit" name="chat_button" class="chat-button" style="margin: 0 auto; display: block;">HACHIに質問する</button></td>
+            <button type="submit" name="chat_button" class="chat-button"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
         </form>
         <br>        
 
@@ -69,7 +72,7 @@
             {{ ocr_form.as_p }}
             <br>
             <div class="button-container">
-                <input type="submit" name="upload_button" value="画像で質問" class="ocr-button" style="margin: 0 auto; display: block;"> 
+                <input type="submit" name="upload_button" value="画像で質問" >
             </div>
         </form>
         <br>

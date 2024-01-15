@@ -1,3 +1,8 @@
+/*スクロール禁止*/
+body{ 
+  overflow: hidden;
+}
+
 /*背景map*/
   .map{
   position: fixed;
@@ -129,12 +134,20 @@
   top: 0px;
   left: 0px;
 }
-  
-/*フォーム入力部*/
-.chat-form{ 
-  position: absolute;
-  
-  z-index:3;
+
+/*しおり*/
+.shiori{
+  position:absolute;
+  z-index:7;
+
+  width:100px;
+  height:auto;
+
+  left: 1415px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+
 }
   
 /*提出ボタン*/
@@ -162,29 +175,25 @@
   z-index: 0;
 
 }
-  
-/*出力フォーム*/
-.hachi_output{
-  position: absolute;
-  height: 400px;
-  width: 700px;
-  
-  bottom: 230px;
-  left:465px;
 
+/*出力部分*/
+.chat-response{
+  position: absolute;
   z-index: 7;
+  
+}
+
+
+/*フォーム入力部*/
+.chat-form{ 
+  position: absolute;
+  z-index:7;
+
 }
 
 /*OCRフォーム*/
 .ocr-form{
   position: absolute;
-
-
   z-index: 7;
-}
 
-
-/*スクロール禁止*/
-body{ 
-  overflow: hidden;
 }
