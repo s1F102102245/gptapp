@@ -6,153 +6,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HACHI</title>
-    <link rel="stylesheet" href="{% static 'gptapp/sample1.css' %}" media="screen and (min-width: 1200px)">
-    <link rel="stylesheet" href="{% static 'gptapp/sample2.css' %}" media="screen and (min-width: 992px)">
-    <link rel="stylesheet" href="{% static 'gptapp/sample3.css' %}" media="screen and (min-width: 768px)">
-    <link rel="stylesheet" href="{% static 'gptapp/sample4.css' %}" media="screen and (max-width: 767px)">
-    <script src="{% static 'gptapp/sample.js' %}"></script>
+    <title>GPT-3とのチャット</title>
+    <link rel="stylesheet" href="{% static 'gptapp/sample.css' %}">
     <!-- <script src="{% static 'gptapp/chat_script.js' %}"></script>  -->
-    <link rel = "icon" href  ="{% static 'gptapp/favicon.ico' %}">
-</head>
     
-
+</head>
 
 <body>
+    <header>
+        <h1>Poket Sensei</h1>
+    </header>
     <main>
-        
-        <!-- 背景画像 -->
-        <img src="{% static 'gptapp/grid.png' %}" class="grid">
-        <img src="{% static 'gptapp/map.png' %}" class="map">
-        
-        
-        <!-- 左上の円と犬 -->
-        <img src="{% static 'gptapp/rogo_circle.png' %}" class="rogo_circle" style="width:250px; height: 250px;">
-        <img src="{% static 'gptapp/HACHI.png' %}" class="hachi" style="width:100px; height:100px; margin-left: 25px;">
-        
-        <!-- フレーム -->
-        <img src="{% static 'gptapp/frame.png' %}" class="frame">
-        
-        <!-- フォーム背景 -->
-        <img src="{% static 'gptapp/form_part.png' %}" class="form_part">
-        
-        <!-- 入力フォーム背景 -->
-        <img src="{% static 'gptapp/form.png' %}" class="form">
-        
-        <!-- 出力画像 -->
-        <img src="{% static 'gptapp/hukidashi.png' %}" class="hukidashi">  
-
-        <!-- 右上のしおり -->
-        <img src="{% static 'gptapp/shiori.png' %}" class="shiori">
-
-
-
-        <!-------------------------ここから本体------------------------------>
-
-        <!-- 出力テキスト -->
-        {% if chat_response %}
-        <section class="chat-response">
-            <p class="hachi_output">
-                {{ chat_response }}
-            </p>
-        </section>
-        {% endif %}
-        
-        <!-- チャットフォーム -->
+        <h2>question for chat gpt</h2>
         <form action="" method="post" class="chat-form">
             {% csrf_token %}
-            <div class="form-row">
-                <div class="input-container">
-                    {% for field in chat_form %}
-                    <p>
-                        {{ field.label_tag }}
-                        {{ field }}
-                    </p>
-                    {% endfor %}
-                </div>
-                <div class="button-container">   
-                    <button type="submit" name="chat_button" class="chat-button"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
-                </div>
-            </div>
+            {{ chat_form.as_p }}
+            <button type="submit" name="chat_button" class="chat-button" style="margin: 0 auto; display: block;">GPT-3に質問する</button>
         </form>
+        <br>
 
-        <!-- ocrフォーム -->
+
+
+        <!-- OCRのフォームとテキスト表示を追加 -->
+        <h2>画像からテキストを抽出する (OCR)</h2>
         <form action="" method="post" class="ocr-form" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="form-row">
-                <div class="input-container">
-                    {{ ocr_form.as_p }}
-                </div>
+            {{ ocr_form.as_p }}
+            <br>
             <div class="button-container">
-                <input type="submit" name="upload_button" value="画像で質問" class="ocr_button">
-            </div>
+                <input type="submit" name="upload_button" value="OCRを実行" class="chat-button" style="margin: 0 auto; display: block;"> 
             </div>
         </form>
-
-    <!--
-        <div class="center-box">
-            <h1>質問かい?勉強してるんだね!偉いぞ!!</h1>
-        <div>
-        
-        <script>
-            document.body.onclick = function() {
-                const h1 = document.querySelector("h1");
-                h1.innerHTML = "今日の目標は3問!さあ!一緒に頑張ろう!";
-            };
-        </script>
-    -->
-
-<!--
-    {% if ocr_text %}
-    <h2>抽出したテキスト:</h2>
-    <p>{{ ocr_text }}</p>
-    {% endif %}
-
-    {% if chat_response %}
-    <section class="chat-response">
-        <h2>回答:</h2>
-        <p>{{ chat_response }}</p>
-    </section>
-    {% endif %}
--->
-
-    <!-- OCRのフォームとテキスト表示を追加 
-    <h2>画像からテキストを抽出する (OCR)</h2>
-    <form action="" method="post" class="ocr-form" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ ocr_form.as_p }}
         <br>
-        <div class="button-container">
-            <input type="submit" name="upload_button" value="OCRを実行" class="chat-button" style="margin: 0 auto; display: block;"> 
+
+
+       
+        <!-- 待機画面の動作 -->
+        <script>
+            document.querySelector('.chat-form').addEventListener('submit', function() {
+                document.getElementById('loading-indicator').style.display = 'block';
+            });
+        </script>
+        <script>
+            document.querySelector('.ocr-form').addEventListener('submit', function() {
+                document.getElementById('loading-indicator').style.display = 'block';
+            });
+        </script>
+        <div id="loading-indicator" style="text-align: center;">
+            <img src="{% static 'gptapp/loading-2.gif' %}" style="width: 300px; height: 200px;"alt="ロード中">
+            <p>ロード中...</p>
         </div>
-    </form>
-    <br>
--->
 
-    <!-- 待機画面の動作 
-    <script>
-        document.querySelector('.chat-form').addEventListener('submit', function() {
-            document.getElementById('loading-indicator').style.display = 'block';
-        });
-    </script>
-    <script>
-        document.querySelector('.ocr-form').addEventListener('submit', function() {
-            document.getElementById('loading-indicator').style.display = 'block';
-        });
-    </script>
-    <div id="loading-indicator" style="text-align: center;">
-        <img src="{% static 'gptapp/loading-2.gif' %}" style="width: 300px; height: 200px;"alt="ロード中">
-        <p>ロード中...</p>
-    </div>
+        <script>
+            function hideLoadingIndicator() {
+                document.getElementById('loading-indicator').style.display = 'none';
+            }
+            hideLoadingIndicator();
+        </script>
+        <!-- 以上。 -->
 
-    <script>
-        function hideLoadingIndicator() {
-            document.getElementById('loading-indicator').style.display = 'none';
-        }
-        hideLoadingIndicator();
-    </script>
-    以上。 -->
+
+
+        {% if ocr_text %}
+        <h2>抽出したテキスト:</h2>
+        <p>{{ ocr_text }}</p>
+        {% endif %}
+
+
+
+        {% if chat_response %}
+        <section class="chat-response">
+            <h2>回答:</h2>
+            <p>{{ chat_response }}</p>
+        </section>
+        {% endif %}
     </main>
 
+    <footer>
+        <h3>&copy; INIAD＠team16-group4</h3>
+    </footer>
 </body>
+
 </html>
