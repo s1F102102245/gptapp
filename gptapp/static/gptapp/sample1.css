@@ -130,19 +130,8 @@
   left: 0px;
 }
   
-/*フォーム白部分*/
-.chat-form{
-  border: 0px;
-  outline: 0px;
-  
-  width: 500px;
-  height: 200px;
-  
-  border-radius:50.5px;
-  
-  top: 623px;
-  left: 505px;
-  
+/*フォーム入力部*/
+.chat-form{ 
   position: absolute;
   
   z-index:3;
@@ -185,6 +174,15 @@
 
   z-index: 7;
 }
+
+/*OCRフォーム*/
+.ocr-form{
+  position: absolute;
+
+
+  z-index: 7;
+}
+
 
 /*スクロール禁止*/
 body{ 
