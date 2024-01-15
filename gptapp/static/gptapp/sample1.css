@@ -151,17 +151,29 @@ body{
 }
   
 /*提出ボタン*/
-.form-submit{  
+.chat-button{  
   position: absolute;
-
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-top: 590px;
-  padding-left: 520px;
-
   z-index:6;
+
+  border: 0px;
+  outline: 0px;
+  border-radius:50.5px;
+  background: none;
+
+  bottom:120px;
 }
-  
+
+/*OCRのボタン*/
+.image-button {
+  background-image: url('button.png'); /* 画像のパスを指定 */
+  background-size: cover; /* 画像がボタンを覆うように調整 */
+  text-indent: -9999px; /* テキストを見えなくする */
+  border: none; /* ボタンのボーダーを消す */
+  cursor: pointer; /* マウスカーソルをポインターにする */
+  width:100px;
+  height:90px;
+}
+
 /*出力部背景画像*/
 .hukidashi{
   position: absolute;
@@ -183,12 +195,20 @@ body{
   
 }
 
-
 /*フォーム入力部*/
 .chat-form{ 
   position: absolute;
   z-index:7;
 
+  resize: none;
+}
+
+/*forms.py側でのclass*/
+.form_py_class{
+  background-image: url('form.png'); /* 画像のパスに適宜置き換えてください */
+  background-repeat: no-repeat;
+  background-size: cover; /* or contain, depending on your preference */
+  /* その他のスタイル定義... */
 }
 
 /*OCRフォーム*/
@@ -196,4 +216,15 @@ body{
   position: absolute;
   z-index: 7;
 
+}
+
+/*フォーム横並び設定*/
+.form-row {
+  display: flex; /* Flexbox を使う */
+  align-items: center; /* 中央揃え */
+  justify-content: space-between; /* アイテム間のスペースを分割 */
+}
+
+.input-container {
+  flex: 1; /* 利用可能なスペースを埋める */
 }

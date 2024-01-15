@@ -61,21 +61,33 @@
         <!-- チャットフォーム -->
         <form action="" method="post" class="chat-form">
             {% csrf_token %}
-            {{ chat_form.as_p }}
-            <button type="submit" name="chat_button" class="chat-button"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
+            <div class="form-row">
+                <div class="input-container">
+                    {% for field in chat_form %}
+                    <p>
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </p>
+                    {% endfor %}
+                </div>
+                <div class="button-container">   
+                    <button type="submit" name="chat_button" class="chat-button"><img src="{% static 'gptapp/button.png' %}" width="100px" height="90px"></button>
+                </div>
+            </div>
         </form>
-        <br>        
 
         <!-- ocrフォーム -->
         <form action="" method="post" class="ocr-form" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ ocr_form.as_p }}
-            <br>
+            <div class="form-row">
+                <div class="input-container">
+                    {{ ocr_form.as_p }}
+                </div>
             <div class="button-container">
-                <input type="submit" name="upload_button" value="画像で質問" >
+                <input type="submit" name="upload_button" value="画像で質問" class="ocr_button">
+            </div>
             </div>
         </form>
-        <br>
 
     <!--
         <div class="center-box">
