@@ -95,12 +95,6 @@
     z-index:5;
 }
 
-/*質問入力フォーム*/
-.chat-form{
-  position: absolute;
-  z-index: -8;
-}
-
 /*画像入力部*/
 .img_form{
   position: absolute;
@@ -137,7 +131,7 @@
   left: 500px;
   position: absolute;
   z-index:0;
-  top: 50px;
+  top: 670px;
 }
   
 /*提出ボタン*/
@@ -183,22 +177,39 @@ body{
   overflow: hidden;
 }
 
+.OOO {
+  display:flex;
+}
+
+/*質問入力フォーム*/
+.chat-form {
+  position: absolute;
+  z-index: -8;
+  display: flex;
+}
+
+.chatbutton {
+  left: 855px;
+  position: absolute;
+  top: 10px;
+}
+
 .chat-response {
   left: 500px;
   position: absolute;
   z-index:0;
-  top: 170px;
+  top: 100px;
 
 }
 
 .ocrmozi {
-  left: 500px;
+  left: 320px;
   position: absolute;
   z-index:0;
-  top: 300px;
+  top: 400px;
 }
 .ocr-form {
-  left: 500px;
+  left: 600px;
   position: absolute;
   z-index:0;
   top: 400px;
@@ -217,10 +228,10 @@ body{
 
 
 .ocr-button{
-  left: 820px;
+  left: 350px;
   position: absolute;
   z-index:0;
-  top: 320px;
+  top: 50px;
   z-index:9999;
 
 

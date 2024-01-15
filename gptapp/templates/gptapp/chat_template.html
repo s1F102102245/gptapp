@@ -43,32 +43,23 @@
         
         <!-- 出力画像 -->
         <img src="{% static 'gptapp/hukidashi.png' %}" class="hukidashi">  
-
-        
-        <form action="" method="post" class="chat-form">
-            {% csrf_token %}
-            {{ chat_form.as_p }}
-            <button type="submit" name="chat_button" class="chat-button" style="margin: 0 auto; display: block;">GPT-3に質問する</button>
-        </form>
-        <br>
         {% if chat_response %}
         <section class="chat-response">
-        <h2>回答:</h2>
         <p>{{ chat_response }}</p>
         </section>
         {% endif %}
-        
 
-        
-        <h2 class="ocrmozi">画像からテキストを抽出する (OCR)</h2>
-        <form action="" method="post" class="ocr-form" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ ocr_form.as_p }}
-            <br>
-            <div class="button-container">
-                <input type="submit" name="upload_button" value="OCRを実行" class="ocr-button" style="margin: 0 auto; display: block;"> 
-            </div>
-        </form>
+        <div class="OOO">
+            <h3 class="ocrmozi">画像からテキストを抽出(ocr)</h3>
+            <form action="" method="post" class="ocr-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ ocr_form.as_p }}
+                <br>
+                <div class="button-container">
+                    <input type="submit" name="upload_button" value="OCRを実行" class="ocr-button" style="margin: 0 auto; display: block;"> 
+                </div>
+            </form>
+        </div>
         <br>
         
 
@@ -78,6 +69,16 @@
         <p>{{ ocr_text }}</p>
         {% endif %}
         </div>
+
+        <form action="" method="post" class="chat-form">
+            {% csrf_token %}
+            {{ chat_form.as_p }}
+            <button type="submit" name="chat_button" class="chatbutton" style="margin: 0 auto; display: block;">GPT-3に質問する</button>
+        </form>
+        
+
+
+        <br>
         
         
         
