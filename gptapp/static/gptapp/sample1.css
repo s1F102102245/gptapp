@@ -216,22 +216,13 @@ body{
 
 }
 
-.TTT {
-  left: 500px;
-  position: absolute;
-  z-index:0;
-  top: 450px;
-  padding: 800;
-  padding-right: 800;
-
-}
 
 
 .ocr-button{
   left: 350px;
   position: absolute;
   z-index:0;
-  top: 50px;
+  top: 10px;
   z-index:9999;
 
 

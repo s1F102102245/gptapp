@@ -56,19 +56,13 @@
                 {{ ocr_form.as_p }}
                 <br>
                 <div class="button-container">
-                    <input type="submit" name="upload_button" value="OCRを実行" class="ocr-button" style="margin: 0 auto; display: block;"> 
+                    <input type="submit" name="upload_button" value="OCRを実行" class="ocr-button" style="margin: 0 auto; display: block;" onclick="showPopup()"> 
                 </div>
             </form>
         </div>
         <br>
         
 
-        <div class="TTT">
-        {% if ocr_text %}
-        <h2>抽出したテキスト:</h2>
-        <p>{{ ocr_text }}</p>
-        {% endif %}
-        </div>
 
         <form action="" method="post" class="chat-form">
             {% csrf_token %}
@@ -76,9 +70,15 @@
             <button type="submit" name="chat_button" class="chatbutton" style="margin: 0 auto; display: block;">GPT-3に質問する</button>
         </form>
         
+        <div id="ocrText" style="display: none;">
+            {% if ocr_text %}
+                <h2>抽出したテキスト:</h2>
+                <p>{{ ocr_text }}</p>
+            {% endif %}
+        </div>
 
 
-        <br>
+
         
         
         
@@ -110,6 +110,19 @@
     </script>
     以上。 -->
     </main>
+    <script>
+        function showPopup() {
+            // テキストエリアからテキストを取得
+            var ocrText = document.getElementById("ocrText").innerText;
+    
+            // ポップアップウィンドウを作成
+            var popupWindow = window.open('', 'popup', 'width=400,height=300');
+    
+            // ポップアップウィンドウにテキストを表示
+            popupWindow.document.write('<h2>抽出したテキスト:</h2>');
+            popupWindow.document.write('<p>' + ocrText + '</p>');
+        }
+    </script>
 
 </body>
 </html>
