@@ -63,7 +63,8 @@ body{
 
 .ocr{
     float: left;
-    text-align: left;
+
+    text-align: center;
 }
 
 /**/
@@ -73,4 +74,14 @@ body{
     background-color: #0257a7;
     border: none;
     
+}
+
+.upload-button{
+    color: white;
+    background-color: #0257a7;
+    border: none;
+}
+
+.dasutoko{
+    top:20px;
 }
