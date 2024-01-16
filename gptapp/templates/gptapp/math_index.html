@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACHI</title>
+    <link rel="stylesheet" href="{% static 'gptapp/math_series/math1.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'gptapp/math_series/math1.css' %}" media="screen and (min-width: 1200px)"> -->
+    <!-- <script src="{% static 'gptapp/chat_script.js' %}"></script>  -->
+    
+</head>
+
+<body background="{% static 'gptapp/math_series/math_main_haikei.png' %}">
+
+    <!-- メイン部分 -->
+
+    <main>
+
+        <!-- ←　左側 -->
+        <div class="parent">
+            <div class="left_content">
+
+                <div class="chat_response_part">
+                    {% if chat_response %}
+                    <section class="chat-response">
+                        <p>{{ chat_response }}</p>
+                    </section>
+                    {% endif %}
+                </div>
+
+                <div class="ocr_response_part">
+                    {% if ocr_text %}
+                    <h3>抽出したテキスト:</h3>
+                    <p>{{ ocr_text }}</p>
+                    {% endif %}
+                </div>
+            </div>   
+
+            <!-- 右側　→-->
+            <div class="right_content">
+                <div class="chat">
+                    <!-- チャットフォーム -->
+                    <form action="" method="post" class="chat-form">
+                        {% csrf_token %}
+                        {{ chat_form }}
+                    <br>    
+                    <!-- ボタン -->
+                        <button type="submit" name="chat_button" class="chat-button">CHAT</button>
+                    </form>
+                </div>    
+
+                <br>
+                <br>
+
+                <div class="ocr">
+                    <!-- OCRのフォームとテキスト表示を追加 -->
+                    <div class="irerutoko">
+                        <form action="" method="post" class="ocr-form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ ocr_form }}
+                        
+                        <div class="dasutoko">
+                            <input type="submit" name="upload_button" value="PICTURE" class="upload-button"> 
+                        </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+        <!-- -------------------------------------------- -->
+
+       
+        <!-- 待機画面の動作 -->
+        <script>
+            document.querySelector('.chat-form').addEventListener('submit', function() {
+                document.getElementById('loading-indicator').style.display = 'block';
+            });
+        </script>
+        <script>
+            document.querySelector('.ocr-form').addEventListener('submit', function() {
+                document.getElementById('loading-indicator').style.display = 'block';
+            });
+        </script>
+        <div id="loading-indicator" style="text-align: center;">
+            <img src="{% static 'gptapp/loading-2.gif' %}" style="width: 300px; height: 200px;"alt="ロード中">
+            <p>ロード中...</p>
+        </div>
+
+        <script>
+            function hideLoadingIndicator() {
+                document.getElementById('loading-indicator').style.display = 'none';
+            }
+            hideLoadingIndicator();
+        </script>
+        <!-- 以上。 -->
+
+</body>
+
+</html>

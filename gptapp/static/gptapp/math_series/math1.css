@@ -1,0 +1,76 @@
+/*スクロール禁止 : 隙間なくし*/
+body{ 
+    overflow: hidden;
+
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+/*.chat-form{
+    margin-top: 340px;
+    margin-left: 1270px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}*/
+
+.parent{
+    display: flex;
+
+    width: 100%;
+}
+
+.left_content{
+    width: 80vw;
+
+    flex-grow: 1;
+    margin-top: 80px;
+    margin-left: 20px;
+    
+}
+
+.right_content{
+    
+    flex-grow: 1;
+
+    margin-top: 50px;
+}
+
+/* */
+
+.chat_response_part{
+    width: 70vw;
+    height: 40vh;
+}
+
+.ocr_response_part{
+    
+}
+
+/* */
+
+.chat{
+    text-align: center;
+
+    margin-top: 250px;
+}
+
+/**/
+
+.ocr{
+    float: left;
+    text-align: left;
+}
+
+/**/
+
+.chat-button{
+    color: white;
+    background-color: #0257a7;
+    border: none;
+    
+}
