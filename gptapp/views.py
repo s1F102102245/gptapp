@@ -107,13 +107,23 @@ def ocr_view(request):
 
 
 def chat_view(request):
+    #pyocrライブラリでTesseract OCRを使用するためのコマンドパスを設定ファイルから`settings.TESSERACT_CMD`に設定
     pyocr.tesseract.TESSERACT_CMD = settings.TESSERACT_CMD
+
+    #出力を保持するための変数を初期化
     chat_response = ""
+    #OCR処理によって取得したテキスト
     ocr_text = None
 
+    #POSTリクエストを処理するために使用される2つのフォームを初期化
+    #`prefix`パラメータは、フォームがPOSTデータのどの部分を使用するかを区別するために設定
     chat_form = ChatForm(request.POST or None, prefix='chat')
     ocr_form = ImageUploadForm(request.POST or None, request.FILES or None, prefix='upload')
 
+
+    #ユーザーがチャットボタンをクリックした場合の処理
+    #もしチャットフォームが有効なデータを含んでいる場合、`chat_with_gpt3`関数を呼び出してユーザー入力に対する応答を取得し、それを`chat_response`に格納
+    #また、OCR結果である`ocr_text`をPOSTデータから取得
     if 'chat_button' in request.POST:
         if chat_form.is_valid():
             user_input = chat_form.cleaned_data['user_input']
@@ -121,6 +131,8 @@ def chat_view(request):
         # フォームが送信された場合でもOCRフォームの情報を保持
         ocr_text = request.POST.get('ocr_text', None)
 
+
+    #ユーザーが画像アップロードボタンをクリックした場合の処理
     if 'upload_button' in request.POST:
         if ocr_form.is_valid():
             uploaded_image1 = ocr_form.cleaned_data['image']
@@ -137,6 +149,34 @@ def chat_view(request):
         user_input = request.POST.get('user_input', None)
         chat_response = chat_with_gpt3(user_input)
 
+    #Djangoの`render`関数を使用して、チャットとOCRフォーム、チャット応答、OCRテキストを含むコンテキストを`chat_template.html`テンプレートファイルに渡し、生成されたHTMLをクライアントに渡す
     return render(request, 'gptapp/chat_template.html', {'chat_form': chat_form, 'chat_response': chat_response, 'ocr_form': ocr_form, 'ocr_text': ocr_text})
 
 
+def math_Answerer(request):
+    #pyocrライブラリでTesseract OCRを使用するためのコマンドパスを設定ファイルから`settings.TESSERACT_CMD`に設定
+    pyocr.tesseract.TESSERACT_CMD = settings.TESSERACT_CMD
+
+    #出力を保持するための変数を初期化
+    chat_response = ""
+    #OCR処理によって取得したテキスト
+    ocr_text = None
+
+    #POSTリクエストを処理するために使用される2つのフォームを初期化
+    #`prefix`パラメータは、フォームがPOSTデータのどの部分を使用するかを区別するために設定
+    chat_form = ChatForm(request.POST or None, prefix='chat')
+    ocr_form = ImageUploadForm(request.POST or None, request.FILES or None, prefix='upload')
+
+    #----------------------------------------------#
+
+    #ユーザーがチャットボタンをクリックした場合の処理
+    #もしチャットフォームが有効なデータを含んでいる場合、`chat_with_gpt3`関数を呼び出してユーザー入力に対する応答を取得し、それを`chat_response`に格納
+    #また、OCR結果である`ocr_text`をPOSTデータから取得
+    if 'chat_button' in request.POST:
+        if chat_form.is_valid():
+            user_input = chat_form.cleaned_data['user_input']
+            chat_response = chat_with_gpt3(user_input)
+        # フォームが送信された場合でもOCRフォームの情報を保持
+        ocr_text = request.POST.get('ocr_text', None)
+    
+    return render(request, 'gptapp/chat_template.html')
