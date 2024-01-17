@@ -57,7 +57,7 @@ def chat_with_gpt3(prompt_text):
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "system", "content": "You are a helpful assistant and you always respond in Japanese."},
                 {"role": "user", "content": f"{prompt_text}"}
             ]
         )
@@ -147,6 +147,8 @@ def chat_view(request):
 
         # フォームが送信された場合でもチャットフォームの情報を保持
         user_input = request.POST.get('user_input', None)
+
+        #交信
         chat_response = chat_with_gpt3(user_input)
 
     #Djangoの`render`関数を使用して、チャットとOCRフォーム、チャット応答、OCRテキストを含むコンテキストを`chat_template.html`テンプレートファイルに渡し、生成されたHTMLをクライアントに渡す
