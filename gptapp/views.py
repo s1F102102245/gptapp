@@ -262,7 +262,7 @@ def math_Answerer(request):
 
                 # OCRで取得したテキストをChatGPTに送る
                 chat_response = chat_with_gpt3(ocr_text)
-                simular_question = make_simular_with_gpt3(user_input)
+                simular_question = make_simular_with_gpt3(ocr_text)
 
         # フォームが送信された場合でもチャットフォームの情報を保持
         #user_input = request.POST.get('user_input', None)
