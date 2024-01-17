@@ -196,6 +196,9 @@ def math_Answerer(request):
                 ocr_text = tool.image_to_string(image, lang="jpn")
                 ocr_text = ocr_text.replace(' ', '')
 
+                # OCRで取得したテキストをChatGPTに送る
+                chat_response = chat_with_gpt3(ocr_text)
+
         # フォームが送信された場合でもチャットフォームの情報を保持
         #user_input = request.POST.get('user_input', None)
         #chat_response = chat_with_gpt3(user_input)
