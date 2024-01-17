@@ -28,15 +28,37 @@
                     <section class="chat-response">
                         <p>{{ chat_response }}</p>
                     </section>
+                    {% else %}
+                    <section class="default-message">
+                        <h1>まずは質問をしてワン！</h1>
+                    </section>
                     {% endif %}
                 </div>
 
                 <div class="ocr_response_part">
                     {% if ocr_text %}
-                    <h3>抽出したテキスト:</h3>
+                    <h3>画像から認識したテキスト:</h3>
                     <p>{{ ocr_text }}</p>
+                    {% else %}
+                    <section class="default-message">
+                        <h1>  </h1>
+                    </section>
                     {% endif %}
                 </div>
+
+                <!-- 類似問題 -->>
+                <div class="simular_part">
+                    <div class="simular_q">
+                        {% if simular_question %}
+                        <section class="simular_question">
+                            <p>{{ simular_question }}</p>
+                        </section>
+                        {% else %}
+                        <section class="default-message">
+                            <h1>質問をしたら生成されるワン！</h1>
+                        </section>
+                        {% endif %}
+                    </div>
             </div>   
 
             <!-- 右側　→-->
