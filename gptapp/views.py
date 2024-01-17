@@ -153,7 +153,7 @@ def chat_with_gpt3(prompt_text):
     #try-except構文。例外処理ともいう。tryで例外が発生するかもしれないが、実行したい処理。except エラー名：で例外発生時に行う処理をかく
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are teacher who only knows mathematics, you answer non-mathematics questions with 「数学のことしかわからないワンねぇ... and you always respond in Japanese. Do not use honorifics and add 'ワン' at the end of the word."},
                 {"role": "user", "content": f"{prompt_text}"}
@@ -168,7 +168,7 @@ def make_simular_with_gpt3(prompt_text):
     try:
 
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are teacher who only knows mathematics, you only create similar problems and their answers, answer non-mathematics question with '数学の問題しか作れないワン...'.  and you always respond in Japanese. Do not use honorifics and add 'ワン' at the end of the word."},
                 {"role": "user", "content": f"{prompt_text}"}
