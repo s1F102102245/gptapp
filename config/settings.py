@@ -103,7 +103,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-OPENAI_API_KEY = 'jU4KkhimGCzNjQckZoAEVjHLJ0YxR6vq7L1s_fm8sghhUGizISVsaIZhcnppByGHW5bZKozF6l2SmozMGXcVuQg'
+OPENAI_API_KEY = 'AiB8jKmkg12-9h6fXbijwP5pcqPJG4TnD63cptET9hIezjmlfqQZtg7WQVLSO7CXPFDNghAfnI-3bAGVAr3hCXQ'
 openai.api_base = 'https://api.openai.iniad.org/api/v1'
 # settings.py
 LOGGING = {
