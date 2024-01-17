@@ -52,6 +52,7 @@ logger = logging.getLogger(__name__)
 openai.api_key = settings.OPENAI_API_KEY
 openai.api_base = 'https://api.openai.iniad.org/api/v1'
 
+'''
 def chat_with_gpt3(prompt_text):
     try:
         response = openai.ChatCompletion.create(
@@ -64,7 +65,7 @@ def chat_with_gpt3(prompt_text):
         return response['choices'][0]['message']['content']
     except Exception as e:
         return str(e)
-
+'''
 
 def chat_viewORI(request):
     chat_response = ""
@@ -152,6 +153,35 @@ def chat_view(request):
     #Djangoの`render`関数を使用して、チャットとOCRフォーム、チャット応答、OCRテキストを含むコンテキストを`chat_template.html`テンプレートファイルに渡し、生成されたHTMLをクライアントに渡す
     return render(request, 'gptapp/chat_template.html', {'chat_form': chat_form, 'chat_response': chat_response, 'ocr_form': ocr_form, 'ocr_text': ocr_text})
 
+def chat_with_gpt3(prompt_text):
+    #try-except構文。例外処理ともいう。tryで例外が発生するかもしれないが、実行したい処理。except エラー名：で例外発生時に行う処理をかく
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are teacher who only knows mathematics, you answer non-mathematics questions with 「数学のことしかわからないワンねぇ... and you always respond in Japanese. Do not use honorifics and add 'ワン' at the end of the word."},
+                {"role": "user", "content": f"{prompt_text}"}
+            ]
+        )
+        return response['choices'][0]['message']['content']
+    
+    except Exception as e:
+        return str(e)
+
+def make_simular_with_gpt3(prompt_text):
+    try:
+
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are teacher who only knows mathematics, you only create similar problems and their answers, answer non-mathematics question with '数学の問題しか作れないワン...'.  and you always respond in Japanese. Do not use honorifics and add 'ワン' at the end of the word."},
+                {"role": "user", "content": f"{prompt_text}"}
+            ]
+        )
+        return response['choices'][0]['message']['content']
+
+    except Exception as e:
+        return str(e)
 
 def math_Answerer(request):
     #pyocrライブラリでTesseract OCRを使用するためのコマンドパスを設定ファイルから`settings.TESSERACT_CMD`に設定
