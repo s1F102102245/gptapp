@@ -22,25 +22,43 @@
         <!-- ←　左側 -->
         <div class="parent">
             <div class="left_content">
-                
-                {% if not ocr_text %}
                 <div class="chat_response_part">
                     {% if chat_response %}
                     <section class="chat-response">
                         <p>{{ chat_response }}</p>
                     </section>
+                    {% else %}
+                    <div class="default-message">
+                        <h1>まずは質問をしてワン！</h1>
+                    </div>
                     {% endif %}
                 </div>
-                {% endif %}
 
                 <div class="ocr_response_part">
                     {% if ocr_text %}
-                    <h3>抽出したテキスト:</h3>
+                    <h3>画像から認識したテキスト:</h3>
                     <p>{{ ocr_text }}</p>
+                    {% else %}
+                    <div class="default-message">
+                        <h3> 画像は認識してないワン </h3>
+                    </div>
                     {% endif %}
                 </div>
-            </div>   
 
+                <!-- 類似問題 -->
+                <div class="simular_part">
+                        {% if simular_question %}
+                        <section class="simular_question">
+                            <h3>生成された類似問題</h3>
+                            <p>{{ simular_question }}</p>
+                        </section>
+                        {% else %}
+                        <section class="default-message">
+                            <h1>質問をしたら生成されるワン！</h1>
+                        </section>
+                        {% endif %}
+                    </div>
+            </div>   
             <!-- 右側　→-->
             <div class="right_content">
                 <div class="chat">
@@ -77,7 +95,7 @@
         <!-- -------------------------------------------- -->
 
        
-        <!-- 待機画面の動作 -->
+        <!-- 待機画面の動作 
         <script>
             document.querySelector('.chat-form').addEventListener('submit', function() {
                 document.getElementById('loading-indicator').style.display = 'block';
@@ -99,6 +117,7 @@
             }
             hideLoadingIndicator();
         </script>
+        -->
         <!-- 以上。 -->
 
 </body>

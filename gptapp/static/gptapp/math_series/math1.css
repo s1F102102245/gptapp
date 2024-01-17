@@ -9,6 +9,8 @@ body{
 
     background-repeat: no-repeat;
     background-size: cover;
+
+    color:#0257a7;
   }
 
 /*.chat-form{
@@ -27,6 +29,7 @@ body{
 
 .left_content{
     width: 80vw;
+    height: 100vh;
 
     flex-grow: 1;
     margin-top: 80px;
@@ -35,6 +38,8 @@ body{
 }
 
 .right_content{
+    width: 20vw;
+    height: 100vh;
     
     flex-grow: 1;
 
@@ -44,17 +49,23 @@ body{
 /* */
 
 .chat_response_part{
-    width: 70vw;
-    height: 40vh;
+    height: 30vh;
 }
 
 .ocr_response_part{
-    
+    height: 10vh;
 }
 
 .default_message{
-
+    height: 10vh;
 }
+
+.simular_part{
+    height: 10vh;
+
+    margin-top:150px;
+}
+
 /* */
 
 .chat{
@@ -69,6 +80,8 @@ body{
     float: left;
 
     text-align: center;
+
+    margin-left: 30px;
 }
 
 /**/

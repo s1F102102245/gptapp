@@ -174,7 +174,7 @@ def make_simular_with_gpt3(prompt_text):
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": "You are teacher who only knows mathematics, you only create similar problems and their answers, answer non-mathematics question with '数学の問題しか作れないワン...'.  and you always respond in Japanese. Do not use honorifics and add 'ワン' at the end of the word."},
+                {"role": "system", "content": "You are teacher who only knows mathematics.Output a different question and its answer similar to the input question. And output based on the format 「'question'を解いてみてワン。答えは'answerだワン。'」 answer non-mathematics question with '数学の問題しか作れないワン...'.  and you always respond in Japanese. Do not use honorifics and add 'ワン' at the end of the word."},
                 {"role": "user", "content": f"{prompt_text}"}
             ]
         )
@@ -186,17 +186,15 @@ def make_simular_with_gpt3(prompt_text):
 def math_Answerer(request):
     #pyocrライブラリでTesseract OCRを使用するためのコマンドパスを設定ファイルから`settings.TESSERACT_CMD`に設定
     pyocr.tesseract.TESSERACT_CMD = settings.TESSERACT_CMD
-
     #出力を保持するための変数を初期化
     chat_response = ""
     #OCR処理によって取得したテキスト
     ocr_text = None
-
+    simular_question = ""
     #POSTリクエストを処理するために使用される2つのフォームを初期化
     #`prefix`パラメータは、フォームがPOSTデータのどの部分を使用するかを区別するために設定
     chat_form = ChatForm(request.POST or None, prefix='chat')
     ocr_form = ImageUploadForm(request.POST or None, request.FILES or None, prefix='upload')
-
     #ユーザーがチャットボタンをクリックした場合の処理
     #もしチャットフォームが有効なデータを含んでいる場合、`chat_with_gpt3`関数を呼び出してユーザー入力に対する応答を取得し、それを`chat_response`に格納
     #また、OCR結果である`ocr_text`をPOSTデータから取得
@@ -205,14 +203,12 @@ def math_Answerer(request):
             user_input = chat_form.cleaned_data.get('user_input')
             if user_input:  # user_inputが空でなければTrue
                 chat_response = chat_with_gpt3(user_input)
+                simular_question = make_simular_with_gpt3(user_input)
             else:
                 # ユーザー入力が空の場合の処理
                 return  # 例えばここで処理を終了したり、適切なメッセージと共にリダイレクトしたり、エラーメッセージを表示する
-
         # フォームが送信された場合でもOCRフォームの情報を保持
         ocr_text = request.POST.get('ocr_text', None)
-
-
     #ユーザーが画像アップロードボタンをクリックした場合の処理
     if 'upload_button' in request.POST:
         if ocr_form.is_valid():
@@ -225,10 +221,11 @@ def math_Answerer(request):
                 image = Image.open(uploaded_image1)
                 ocr_text = tool.image_to_string(image, lang="jpn")
                 ocr_text = ocr_text.replace(' ', '')
-
+                # OCRで取得したテキストをChatGPTに送る
+                chat_response = chat_with_gpt3(ocr_text)
+                simular_question = make_simular_with_gpt3(ocr_text)
         # フォームが送信された場合でもチャットフォームの情報を保持
         #user_input = request.POST.get('user_input', None)
         #chat_response = chat_with_gpt3(user_input)
-
     #Djangoの`render`関数を使用して、チャットとOCRフォーム、チャット応答、OCRテキストを含むコンテキストを`chat_template.html`テンプレートファイルに渡し、生成されたHTMLをクライアントに渡す
-    return render(request, 'gptapp/math_index.html', {'chat_form': chat_form, 'chat_response': chat_response, 'ocr_form': ocr_form, 'ocr_text': ocr_text})
+    return render(request, 'gptapp/math_index.html', {'chat_form': chat_form, 'chat_response': chat_response, 'simular_question':simular_question,'ocr_form': ocr_form, 'ocr_text': ocr_text})
